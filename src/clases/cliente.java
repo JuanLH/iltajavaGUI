@@ -10,14 +10,14 @@ package clases;
  * @author HiraldoTran
  */
 public class cliente {
-   private int id; 
+    private int id; 
     private String nombre;
     private String direccion;
     private String cedula;
     private String telefono1;
     private String telefono2;
     private String email;
-
+    
     public int getId() {
         return id;
     }
