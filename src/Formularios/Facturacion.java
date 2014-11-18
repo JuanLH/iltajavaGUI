@@ -189,6 +189,11 @@ public class Facturacion extends javax.swing.JDialog {
 
         jLabel10.setFont(new java.awt.Font("Cambria", 0, 14)); // NOI18N
         jLabel10.setText("jLabel10");
+        jLabel10.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel10MouseClicked(evt);
+            }
+        });
 
         jLabel11.setFont(new java.awt.Font("Cambria", 0, 14)); // NOI18N
         jLabel11.setText("Producto");
@@ -381,6 +386,11 @@ public class Facturacion extends javax.swing.JDialog {
         BuscarArticulo buscar = new BuscarArticulo(null, rootPaneCheckingEnabled);
         buscar.setVisible(true);
     }//GEN-LAST:event_jLabel13MouseClicked
+
+    private void jLabel10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel10MouseClicked
+        BuscarFactura buscar = new BuscarFactura(null, rootPaneCheckingEnabled);
+        buscar.setVisible(true);
+    }//GEN-LAST:event_jLabel10MouseClicked
 
     /**
      * @param args the command line arguments
