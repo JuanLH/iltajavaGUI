@@ -39,7 +39,7 @@ public class BuscarFactura extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Cambria", 0, 24)); // NOI18N
-        jLabel1.setText("Buscar");
+        jLabel1.setText("Buscar Factura");
 
         jLabel2.setFont(new java.awt.Font("Cambria", 0, 14)); // NOI18N
         jLabel2.setText("Buscar por ID");
