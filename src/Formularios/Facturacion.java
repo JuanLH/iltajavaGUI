@@ -74,7 +74,7 @@ public class Facturacion extends javax.swing.JDialog {
 
         jTextField3.setFont(new java.awt.Font("Cambria", 1, 14)); // NOI18N
 
-        jLabel1.setFont(new java.awt.Font("Cambria", 1, 14)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Cambria", 1, 24)); // NOI18N
         jLabel1.setText("Facturacion");
 
         jTextField10.setFont(new java.awt.Font("Cambria", 1, 14)); // NOI18N
