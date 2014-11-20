@@ -69,20 +69,20 @@ public class Facturacion extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jLabel12.setFont(new java.awt.Font("Cambria", 0, 14)); // NOI18N
+        jLabel12.setFont(new java.awt.Font("Cambria", 1, 14)); // NOI18N
         jLabel12.setText("Cantidad");
 
-        jTextField3.setFont(new java.awt.Font("Cambria", 0, 14)); // NOI18N
+        jTextField3.setFont(new java.awt.Font("Cambria", 1, 14)); // NOI18N
 
-        jLabel1.setFont(new java.awt.Font("Cambria", 0, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Cambria", 1, 14)); // NOI18N
         jLabel1.setText("Facturacion");
 
-        jTextField10.setFont(new java.awt.Font("Cambria", 0, 14)); // NOI18N
+        jTextField10.setFont(new java.awt.Font("Cambria", 1, 14)); // NOI18N
 
-        jLabel2.setFont(new java.awt.Font("Cambria", 0, 14)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Cambria", 1, 14)); // NOI18N
         jLabel2.setText("ID");
 
-        jLabel13.setFont(new java.awt.Font("Cambria", 0, 14)); // NOI18N
+        jLabel13.setFont(new java.awt.Font("Cambria", 1, 14)); // NOI18N
         jLabel13.setText("jLabel13");
         jLabel13.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -90,38 +90,38 @@ public class Facturacion extends javax.swing.JDialog {
             }
         });
 
-        jLabel3.setFont(new java.awt.Font("Cambria", 0, 14)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Cambria", 1, 14)); // NOI18N
         jLabel3.setText("Fecha");
 
-        jLabel4.setFont(new java.awt.Font("Cambria", 0, 14)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Cambria", 1, 14)); // NOI18N
         jLabel4.setText("Tipo");
 
-        jTextField2.setFont(new java.awt.Font("Cambria", 0, 14)); // NOI18N
+        jTextField2.setFont(new java.awt.Font("Cambria", 1, 14)); // NOI18N
         jTextField2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField2ActionPerformed(evt);
             }
         });
 
-        jTextField12.setFont(new java.awt.Font("Cambria", 0, 14)); // NOI18N
+        jTextField12.setFont(new java.awt.Font("Cambria", 1, 14)); // NOI18N
         jTextField12.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField12ActionPerformed(evt);
             }
         });
 
-        jTextField4.setFont(new java.awt.Font("Cambria", 0, 14)); // NOI18N
+        jTextField4.setFont(new java.awt.Font("Cambria", 1, 14)); // NOI18N
 
-        jTextField5.setFont(new java.awt.Font("Cambria", 0, 14)); // NOI18N
+        jTextField5.setFont(new java.awt.Font("Cambria", 1, 14)); // NOI18N
 
-        jTextField13.setFont(new java.awt.Font("Cambria", 0, 14)); // NOI18N
+        jTextField13.setFont(new java.awt.Font("Cambria", 1, 14)); // NOI18N
 
-        jTextField6.setFont(new java.awt.Font("Cambria", 0, 14)); // NOI18N
+        jTextField6.setFont(new java.awt.Font("Cambria", 1, 14)); // NOI18N
 
-        jButton1.setFont(new java.awt.Font("Cambria", 0, 14)); // NOI18N
+        jButton1.setFont(new java.awt.Font("Cambria", 1, 14)); // NOI18N
         jButton1.setText("Facturar");
 
-        jComboBox1.setFont(new java.awt.Font("Cambria", 0, 14)); // NOI18N
+        jComboBox1.setFont(new java.awt.Font("Cambria", 1, 14)); // NOI18N
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Debito", "Credito" }));
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -129,15 +129,15 @@ public class Facturacion extends javax.swing.JDialog {
             }
         });
 
-        jButton2.setFont(new java.awt.Font("Cambria", 0, 14)); // NOI18N
+        jButton2.setFont(new java.awt.Font("Cambria", 1, 14)); // NOI18N
         jButton2.setText("Eliminar");
 
-        jTextField7.setFont(new java.awt.Font("Cambria", 0, 14)); // NOI18N
+        jTextField7.setFont(new java.awt.Font("Cambria", 1, 14)); // NOI18N
 
-        jButton3.setFont(new java.awt.Font("Cambria", 0, 14)); // NOI18N
+        jButton3.setFont(new java.awt.Font("Cambria", 1, 14)); // NOI18N
         jButton3.setText("Salir");
 
-        jLabel8.setFont(new java.awt.Font("Cambria", 0, 14)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Cambria", 1, 14)); // NOI18N
         jLabel8.setText("Usuario");
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -153,26 +153,26 @@ public class Facturacion extends javax.swing.JDialog {
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        jTextField8.setFont(new java.awt.Font("Cambria", 0, 14)); // NOI18N
+        jTextField8.setFont(new java.awt.Font("Cambria", 1, 14)); // NOI18N
 
-        jComboBox2.setFont(new java.awt.Font("Cambria", 0, 14)); // NOI18N
+        jComboBox2.setFont(new java.awt.Font("Cambria", 1, 14)); // NOI18N
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Compra", "Alquiler" }));
 
-        jLabel5.setFont(new java.awt.Font("Cambria", 0, 14)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Cambria", 1, 14)); // NOI18N
         jLabel5.setText("Cleinte");
 
-        jLabel17.setFont(new java.awt.Font("Cambria", 0, 14)); // NOI18N
+        jLabel17.setFont(new java.awt.Font("Cambria", 1, 14)); // NOI18N
         jLabel17.setText("Comp/Alqui");
 
-        jLabel6.setFont(new java.awt.Font("Cambria", 0, 14)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Cambria", 1, 14)); // NOI18N
         jLabel6.setText("Orden");
 
-        jTextField9.setFont(new java.awt.Font("Cambria", 0, 14)); // NOI18N
+        jTextField9.setFont(new java.awt.Font("Cambria", 1, 14)); // NOI18N
 
-        jLabel14.setFont(new java.awt.Font("Cambria", 0, 14)); // NOI18N
+        jLabel14.setFont(new java.awt.Font("Cambria", 1, 14)); // NOI18N
         jLabel14.setText("SubTotal:");
 
-        jLabel9.setFont(new java.awt.Font("Cambria", 0, 14)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("Cambria", 1, 14)); // NOI18N
         jLabel9.setText("jLabel9");
         jLabel9.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -180,10 +180,10 @@ public class Facturacion extends javax.swing.JDialog {
             }
         });
 
-        jLabel15.setFont(new java.awt.Font("Cambria", 0, 14)); // NOI18N
+        jLabel15.setFont(new java.awt.Font("Cambria", 1, 14)); // NOI18N
         jLabel15.setText("ITBIS");
 
-        jLabel10.setFont(new java.awt.Font("Cambria", 0, 14)); // NOI18N
+        jLabel10.setFont(new java.awt.Font("Cambria", 1, 14)); // NOI18N
         jLabel10.setText("jLabel10");
         jLabel10.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -191,24 +191,24 @@ public class Facturacion extends javax.swing.JDialog {
             }
         });
 
-        jLabel7.setFont(new java.awt.Font("Cambria", 0, 14)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Cambria", 1, 14)); // NOI18N
         jLabel7.setText("Hecho por");
 
-        jLabel11.setFont(new java.awt.Font("Cambria", 0, 14)); // NOI18N
+        jLabel11.setFont(new java.awt.Font("Cambria", 1, 14)); // NOI18N
         jLabel11.setText("Producto");
 
-        jLabel16.setFont(new java.awt.Font("Cambria", 0, 14)); // NOI18N
+        jLabel16.setFont(new java.awt.Font("Cambria", 1, 14)); // NOI18N
         jLabel16.setText("TOTAL:");
 
-        jTextField1.setFont(new java.awt.Font("Cambria", 0, 14)); // NOI18N
+        jTextField1.setFont(new java.awt.Font("Cambria", 1, 14)); // NOI18N
 
-        jTextField11.setFont(new java.awt.Font("Cambria", 0, 14)); // NOI18N
+        jTextField11.setFont(new java.awt.Font("Cambria", 1, 14)); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 717, Short.MAX_VALUE)
+            .addGap(0, 722, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addContainerGap()
@@ -229,7 +229,7 @@ public class Facturacion extends javax.swing.JDialog {
                                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                         .addComponent(jTextField6)
                                         .addComponent(jTextField5, javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(jComboBox1, 0, 99, Short.MAX_VALUE)
+                                        .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(jTextField2)
                                         .addComponent(jTextField1)
                                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
