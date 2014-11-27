@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package Formularios;
-
+import clase.NewJerseyClient;
 /**
  *
  * @author Raul
@@ -68,6 +68,11 @@ public class BuscarArticulo extends javax.swing.JDialog {
 
         jButton1.setFont(new java.awt.Font("Cambria", 0, 14)); // NOI18N
         jButton1.setText("Seleccionar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setFont(new java.awt.Font("Cambria", 0, 14)); // NOI18N
         jButton2.setText("Cancelar");
@@ -124,6 +129,12 @@ public class BuscarArticulo extends javax.swing.JDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        NewJerseyClient ne1 = new NewJerseyClient();
+        
+       System.out.println(ne1.getproducto());
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
