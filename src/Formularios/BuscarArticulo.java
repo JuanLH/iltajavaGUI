@@ -50,6 +50,11 @@ public class BuscarArticulo extends javax.swing.JDialog {
         jLabel3.setText("Buscar por codigo");
 
         jTextField1.setFont(new java.awt.Font("Cambria", 0, 14)); // NOI18N
+        jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextField1KeyReleased(evt);
+            }
+        });
 
         jTextField2.setFont(new java.awt.Font("Cambria", 0, 14)); // NOI18N
 
@@ -132,9 +137,16 @@ public class BuscarArticulo extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-      ClienteProducto hola = new ClienteProducto();
-      hola.getproduct_id_nombre("0a6077e8f50ce3b2c3a0b6aa19ccf1b1",jTextField1.getText());
+
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jTextField1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyReleased
+      if("".equals(jTextField1.getText()))
+          return;
+        ClienteProducto hola = new ClienteProducto();
+      hola.getproduct_id_nombre("0a6077e8f50ce3b2c3a0b6aa19ccf1b1",jTextField1.getText());
+     
+    }//GEN-LAST:event_jTextField1KeyReleased
 
     /**
      * @param args the command line arguments
