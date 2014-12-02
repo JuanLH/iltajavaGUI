@@ -5,6 +5,8 @@
  */
 package Clientes;
 
+import com.google.gson.Gson;
+import dto.Respuesta;
 import javax.ws.rs.ClientErrorException;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.WebTarget;
@@ -25,7 +27,7 @@ import javax.ws.rs.client.WebTarget;
 public class ClienteProducto {
     private WebTarget webTarget;
     private Client client;
-    private static final String BASE_URI = "http://itla2-itlajavados.rhcloud.com/itlajava23/webresources";
+    private static final String BASE_URI = "http://itla2-itlajavados.rhcloud.com/itlajava27/webresources";
 
     public ClienteProducto() {
         client = javax.ws.rs.client.ClientBuilder.newClient();
@@ -36,12 +38,16 @@ public class ClienteProducto {
         webTarget.request(javax.ws.rs.core.MediaType.APPLICATION_JSON).put(javax.ws.rs.client.Entity.entity(requestEntity, javax.ws.rs.core.MediaType.APPLICATION_JSON));
     }
 
-    public String getproduct_id_nombre(String token, String nombre) throws ClientErrorException {
+    public Respuesta getproduct_id_nombre(String token, String nombre) throws ClientErrorException {
         WebTarget resource = webTarget;
+        Gson json = new Gson();
+        Respuesta respo = new Respuesta();
         resource = resource.path(java.text.MessageFormat.format("getproducto/{0}/{1}", new Object[]{token, nombre}));
-        System.out.println(resource.request(javax.ws.rs.core.MediaType.APPLICATION_JSON).get(String.class));
-        
-        return resource.request(javax.ws.rs.core.MediaType.APPLICATION_JSON).get(String.class);
+        //System.out.println(resource.request(javax.ws.rs.core.MediaType.APPLICATION_JSON).get(String.class));
+        String res=resource.request(javax.ws.rs.core.MediaType.APPLICATION_JSON).get(String.class);
+        respo = json.fromJson(res, Respuesta.class);
+        return respo;
+        //return resource.request(javax.ws.rs.core.MediaType.APPLICATION_JSON).get(String.class);
     }
 
    /* public <T> T insertar_producto(Class<T> responseType, String token, String informacion) throws ClientErrorException {

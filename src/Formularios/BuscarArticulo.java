@@ -5,6 +5,16 @@
  */
 package Formularios;
 import Clientes.ClienteProducto;
+import com.google.common.reflect.TypeToken;
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParser;
+import dto.Productos;
+import dto.Respuesta;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
 /**
  *
  * @author Raul
@@ -50,11 +60,6 @@ public class BuscarArticulo extends javax.swing.JDialog {
         jLabel3.setText("Buscar por codigo");
 
         jTextField1.setFont(new java.awt.Font("Cambria", 0, 14)); // NOI18N
-        jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                jTextField1KeyReleased(evt);
-            }
-        });
 
         jTextField2.setFont(new java.awt.Font("Cambria", 0, 14)); // NOI18N
 
@@ -137,17 +142,60 @@ public class BuscarArticulo extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jTextField1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyReleased
-      if("".equals(jTextField1.getText()))
-          return;
-        ClienteProducto hola = new ClienteProducto();
-      hola.getproduct_id_nombre("0a6077e8f50ce3b2c3a0b6aa19ccf1b1",jTextField1.getText());
+      ClienteProducto hola = new ClienteProducto();
+      DefaultTableModel modelo = new DefaultTableModel();
      
-    }//GEN-LAST:event_jTextField1KeyReleased
-
+      List<Productos> lista = new ArrayList<Productos>(); 
+      Respuesta res = hola.getproduct_id_nombre("0a6077e8f50ce3b2c3a0b6aa19ccf1b1",jTextField1.getText());
+      if (res.getId() > 0)
+      {   
+            Gson json = new Gson();
+         
+            JsonElement son = new JsonParser().parse(res.getMensaje());
+            JsonArray array = son.getAsJsonArray();
+   
+         
+          
+            System.out.println("con foreach");
+            for (JsonElement json2: array)
+            {
+                Productos prod = new Productos();
+                prod = json.fromJson(json2, Productos.class);
+                
+                lista.add(prod);
+                
+            }
+                 String[] col = {"ID","Nombre","Descripcion","","","","","","",""};
+                 
+               for (int i=0;i<col.length;i++)
+                   modelo.addColumn(col[i]);
+               
+               
+                jTable1.setModel(modelo);
+        
+           
+             System.out.println("con lista");
+            //
+             int k;
+            TypeToken<List<Productos>> token = new  TypeToken<List<Productos>>(){};
+            List<Productos> lis = json.fromJson(res.getMensaje(),token.getType());
+            for (Productos p: lis)
+            {    
+                k=0;
+                Object[] fila = new Object[10];
+                fila[k++]=(Object)p.getF_id();
+                fila[k++]=(Object)p.getF_nombre();
+                fila[k++]=(Object)p.getF_descripcion();
+                fila[k++]=(Object)p.getF_precioAlquiler();
+                fila[k++]=(Object)p.getF_descripcion();
+                fila[k++]=(Object)p.getF_descripcion();
+                fila[k++]=(Object)p.getF_descripcion();
+                modelo.addRow(fila);
+                System.out.println("token = "+p.getF_id());
+            }   
+      }
+    }//GEN-LAST:event_jButton1ActionPerformed
+    
     /**
      * @param args the command line arguments
      */
