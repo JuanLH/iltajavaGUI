@@ -421,7 +421,7 @@ public class Facturacion extends javax.swing.JDialog {
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void jLabel13MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel13MouseClicked
-        BuscarArticulo buscar = new BuscarArticulo(null, rootPaneCheckingEnabled);
+        BuscarProducto buscar = new BuscarProducto(null, rootPaneCheckingEnabled);
         buscar.setVisible(true);
     }//GEN-LAST:event_jLabel13MouseClicked
 
