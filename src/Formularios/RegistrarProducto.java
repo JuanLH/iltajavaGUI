@@ -48,6 +48,7 @@ public class RegistrarProducto extends javax.swing.JDialog {
         jLabel8 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
 
         jLabel3.setFont(new java.awt.Font("Cambria", 1, 14)); // NOI18N
         jLabel3.setText("Dias Recu.");
@@ -218,6 +219,7 @@ public class RegistrarProducto extends javax.swing.JDialog {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void diasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_diasActionPerformed
