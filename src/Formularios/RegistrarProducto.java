@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package Formularios;
-import Clientes.NewJerseyClient;
 /**
  *
  * @author Raul
@@ -247,8 +246,7 @@ public class RegistrarProducto extends javax.swing.JDialog {
     }//GEN-LAST:event_cantidadActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-      NewJerseyClient pro = new NewJerseyClient();
-      pro.insertar_producto("1", "Silla", "vrtgr", "2500","30", "32", "32", "32", "32", "32");
+     
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**

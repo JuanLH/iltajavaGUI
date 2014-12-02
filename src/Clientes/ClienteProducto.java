@@ -14,20 +14,20 @@ import javax.ws.rs.client.WebTarget;
  * [producto]<br>
  * USAGE:
  * <pre>
- *        NewJerseyClient client = new NewJerseyClient();
+ *        ClienteProducto client = new ClienteProducto();
  *        Object response = client.XXX(...);
  *        // do whatever with response
  *        client.close();
  * </pre>
  *
- * @author HiraldoTran
+ * @author Ivan Reyes
  */
-public class NewJerseyClient {
+public class ClienteProducto {
     private WebTarget webTarget;
     private Client client;
-    private static final String BASE_URI = "http://itla2-itlajavados.rhcloud.com/itlajava11/webresources";
+    private static final String BASE_URI = "http://itla2-itlajavados.rhcloud.com/itlajava23/webresources";
 
-    public NewJerseyClient() {
+    public ClienteProducto() {
         client = javax.ws.rs.client.ClientBuilder.newClient();
         webTarget = client.target(BASE_URI).path("producto");
     }
@@ -36,22 +36,20 @@ public class NewJerseyClient {
         webTarget.request(javax.ws.rs.core.MediaType.APPLICATION_JSON).put(javax.ws.rs.client.Entity.entity(requestEntity, javax.ws.rs.core.MediaType.APPLICATION_JSON));
     }
 
-    public String getproduct_id_nombre(String id, String token) throws ClientErrorException {
+    public String getproduct_id_nombre(String token, String nombre) throws ClientErrorException {
         WebTarget resource = webTarget;
-        resource = resource.path(java.text.MessageFormat.format("getproducto/{0}/{1}", new Object[]{id, token}));
+        resource = resource.path(java.text.MessageFormat.format("getproducto/{0}/{1}", new Object[]{token, nombre}));
+        System.out.println(resource.request(javax.ws.rs.core.MediaType.APPLICATION_JSON).get(String.class));
+        
         return resource.request(javax.ws.rs.core.MediaType.APPLICATION_JSON).get(String.class);
     }
 
-    public void insertar_producto(String id, String nombre, String descripcion, String costo, String precioventa, String precioalquiler, String alquilerventa, String cantidadalquiler, String cantidadventa, String diasrecuperacion) throws ClientErrorException {
-        webTarget.path(java.text.MessageFormat.format("insertarproducto/{0}/{1}/{2}/{3}//{4}/{5}/{6}/{7}/{8}/{9}", new Object[]{id, nombre, descripcion, costo, precioventa, precioalquiler, alquilerventa, cantidadalquiler, cantidadventa, diasrecuperacion})).request().put(null);
-    }
-
-    public String getproducto() throws ClientErrorException {
+   /* public <T> T insertar_producto(Class<T> responseType, String token, String informacion) throws ClientErrorException {
         WebTarget resource = webTarget;
-        resource = resource.path("getproductos");
-        return resource.request(javax.ws.rs.core.MediaType.APPLICATION_JSON).get(String.class);
+        resource = resource.path(java.text.MessageFormat.format("insertarproducto/{0}/{1}", new Object[]{token, informacion}));
+        return resource.get(responseType);
     }
-
+*/
     public String getJson() throws ClientErrorException {
         WebTarget resource = webTarget;
         return resource.request(javax.ws.rs.core.MediaType.APPLICATION_JSON).get(String.class);

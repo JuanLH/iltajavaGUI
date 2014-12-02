@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package Formularios;
-import Clientes.NewJerseyClient;
+import Clientes.ClienteProducto;
 /**
  *
  * @author Raul
@@ -132,9 +132,9 @@ public class BuscarProducto extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        NewJerseyClient ne1 = new NewJerseyClient();
+        ClienteProducto ne1 = new ClienteProducto();
         
-       System.out.println(ne1.getproducto());
+   
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
