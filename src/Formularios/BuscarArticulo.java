@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package Formularios;
-import clase.NewJerseyClient;
+import Clientes.NewJerseyClient;
 /**
  *
  * @author Raul

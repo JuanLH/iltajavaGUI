@@ -6,7 +6,7 @@
 package Formularios;
 
 import Clientes.ClienteLogin;
-import clase.Mensajes;
+import Clases.Mensajes;
 
 /**
  *
