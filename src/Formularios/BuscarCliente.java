@@ -5,6 +5,8 @@
  */
 package Formularios;
 
+import Clientes.ClienteCliente;
+
 /**
  *
  * @author Raul
@@ -68,6 +70,11 @@ public class BuscarCliente extends javax.swing.JDialog {
 
         jButton1.setFont(new java.awt.Font("Cambria", 0, 14)); // NOI18N
         jButton1.setText("Seleccionar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setFont(new java.awt.Font("Cambria", 0, 14)); // NOI18N
         jButton2.setText("Cancelar");
@@ -124,6 +131,11 @@ public class BuscarCliente extends javax.swing.JDialog {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        ClienteCliente buscar = new ClienteCliente();
+        buscar.getCliente_nombre_apellido("0a6077e8f50ce3b2c3a0b6aa19ccf1b1",jTextField1.getText());
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
