@@ -41,9 +41,7 @@ public class BuscarArticulo extends javax.swing.JDialog {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
@@ -57,17 +55,12 @@ public class BuscarArticulo extends javax.swing.JDialog {
         jLabel2.setFont(new java.awt.Font("Cambria", 1, 14)); // NOI18N
         jLabel2.setText("Buscar por nombre");
 
-        jLabel3.setFont(new java.awt.Font("Cambria", 1, 14)); // NOI18N
-        jLabel3.setText("Buscar por codigo");
-
         jTextField1.setFont(new java.awt.Font("Cambria", 1, 14)); // NOI18N
         jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 jTextField1KeyReleased(evt);
             }
         });
-
-        jTextField2.setFont(new java.awt.Font("Cambria", 1, 14)); // NOI18N
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -102,64 +95,56 @@ public class BuscarArticulo extends javax.swing.JDialog {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButton1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton2))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jLabel2)
-                                        .addGap(6, 6, 6))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jLabel3)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(1, 1, 1)
-                                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(118, 118, 118)))
+                                .addGap(30, 30, 30)
+                                .addComponent(jButton1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButton2))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(331, 331, 331)
+                                .addComponent(jLabel1)))
+                        .addGap(0, 588, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
                 .addComponent(jLabel1)
                 .addGap(37, 37, 37)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 39, Short.MAX_VALUE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 39, Short.MAX_VALUE))
-                .addContainerGap())
+                .addGap(36, 36, 36)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 358, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -167,17 +152,18 @@ public class BuscarArticulo extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jTextField1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyReleased
-      if("".equals(jTextField1.getText()))
+       try
+      {
+        
+        if("".equals(jTextField1.getText()))
       {return;}
-      ClienteProducto hola = new ClienteProducto();
+      ClienteProducto producto = new ClienteProducto();
       DefaultTableModel modelo = new DefaultTableModel();
      
       List<Productos> lista = new ArrayList<Productos>(); 
-      Respuesta res = hola.getproduct_id_nombre("0a6077e8f50ce3b2c3a0b6aa19ccf1b1",jTextField1.getText());
+      Respuesta res = producto.getproduct_id_nombre("0a6077e8f50ce3b2c3a0b6aa19ccf1b1",jTextField1.getText());
+      
+      
       if (res.getId() > 0)
       {   
             Gson json = new Gson();
@@ -196,35 +182,76 @@ public class BuscarArticulo extends javax.swing.JDialog {
                 lista.add(prod);
                 
             }
-                 String[] col = {"ID","Nombre","Descripcion","","","","","","",""};
+               
+            
+            // Declaramos un vector de columnas
+            String[] col = {"ID","Nombre","Descripcion","Costo","Precio de Venta","Precio de Alquiler","Producto de Venta o Alquiler","Cantidad para alquiler","Cantidad para venta","Días de recuperacion"};
                  
+            // ciclo for para agregar cada una de las columnas
                for (int i=0;i<col.length;i++)
                    modelo.addColumn(col[i]);
-               
-               
-                jTable1.setModel(modelo);
-        
-           
-             System.out.println("con lista");
-            //
-             int k;
-            TypeToken<List<Productos>> token = new  TypeToken<List<Productos>>(){};
-            List<Productos> lis = json.fromJson(res.getMensaje(),token.getType());
-            for (Productos p: lis)
+              
+               int k;
+                for (Productos p: lista)
             {    
+                
+                System.out.println(p.getF_alquilerVenta());
                 k=0;
                 Object[] fila = new Object[10];
                 fila[k++]=(Object)p.getF_id();
                 fila[k++]=(Object)p.getF_nombre();
                 fila[k++]=(Object)p.getF_descripcion();
+                fila[k++]=(Object)p.getF_costo();
+                fila[k++]=(Object)p.getF_precioVenta();
                 fila[k++]=(Object)p.getF_precioAlquiler();
-                fila[k++]=(Object)p.getF_descripcion();
-                fila[k++]=(Object)p.getF_descripcion();
-                fila[k++]=(Object)p.getF_descripcion();
+                fila[k++]=(Object)p.getF_alquilerVenta();
+                fila[k++]=(Object)p.getF_cantidadALquiler();
+                fila[k++]=(Object)p.getF_cantidadVenta();
+                fila[k++]=(Object)p.getF_diasRecuperacion();
                 modelo.addRow(fila);
-                System.out.println("token = "+p.getF_id());
-            }   
+                System.out.println("Mensaje del webservice = "+p.getF_id());
+                
+            }
+                
+        
+           
+//             System.out.println("con lista");
+//            //
+//             int k;
+//            TypeToken<List<Productos>> token = new  TypeToken<List<Productos>>(){};
+//            List<Productos> lis = json.fromJson(res.getMensaje(),token.getType());
+//            // Ciclo for para agregar las filas
+//            for (Productos p: lis)
+//            {    
+//                
+//                System.out.println(p.getF_cantidadVenta());
+//                k=0;
+//                Object[] fila = new Object[11];
+//                fila[k++]=(Object)p.getF_id();
+//                fila[k++]=(Object)p.getF_nombre();
+//                fila[k++]=(Object)p.getF_descripcion();
+//                fila[k++]=(Object)p.getF_costo();
+//                fila[k++]=(Object)p.getF_precioVenta();
+//                fila[k++]=(Object)p.getF_precioAlquiler();
+//                fila[k++]=(Object)p.getF_alquilerVenta();
+//                fila[k++]=(Object)p.getF_cantidadALquiler();
+//                fila[k++]=(Object)p.getF_cantidadVenta();
+//                fila[k++]=(Object)p.getF_diasRecuperacion();
+//                modelo.addRow(fila);
+//                System.out.println("token = "+p.getF_id());
+//                
+//            }
+            jTable1.setModel(modelo);
       }
+      }
+      catch(Exception e)
+              {
+               e.printStackTrace();
+              }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jTextField1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyReleased
+      
     }//GEN-LAST:event_jTextField1KeyReleased
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
@@ -278,11 +305,9 @@ public class BuscarArticulo extends javax.swing.JDialog {
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
     // End of variables declaration//GEN-END:variables
 }

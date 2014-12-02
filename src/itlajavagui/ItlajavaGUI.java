@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package itlajavagui;
-
+import Formularios.Login;
 /**
  *
  * @author HiraldoTran
@@ -14,8 +14,12 @@ public class ItlajavaGUI {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
-        // TODO code application logic here
+    public static void main(String[] args) 
+    {
+    Login l = new Login();
+    l.setVisible(true);
+    
+    
     }
     
 }
