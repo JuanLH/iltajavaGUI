@@ -27,7 +27,7 @@ import javax.ws.rs.client.WebTarget;
 public class ClienteProducto {
     private WebTarget webTarget;
     private Client client;
-    private static final String BASE_URI = "http://itla2-itlajavados.rhcloud.com/itlajava27/webresources";
+    private static final String BASE_URI = "http://itla2-itlajavados.rhcloud.com/itlajava38/webresources";
 
     public ClienteProducto() {
         client = javax.ws.rs.client.ClientBuilder.newClient();

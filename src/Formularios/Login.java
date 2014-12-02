@@ -7,6 +7,7 @@ package Formularios;
 
 import Clientes.ClienteLogin;
 import Clases.Mensajes;
+import dto.Respuesta;
 
 /**
  *
@@ -134,23 +135,36 @@ public class Login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        Mensajes alerta = new Mensajes();
-
+       Mensajes alerta = new Mensajes();
+       
         //Comparamos que los campos no esten vacios
         if(jTextField1.getText().equals("") || jPasswordField1.getText().equals(""))
         {
-            alerta.mensajeError(evt, "Todos los Campos son Obligatorios");
-            return;
+         alerta.mensajeError(evt, "Todos los Campos son Obligatorios");
+         return;   
         }
-        //Instancia del Java client que invoca el webservices
+        
+//Instancia del Java client que invoca el webservices
         ClienteLogin log = new ClienteLogin();
-        log.getStatus(jTextField1.getText(), jPasswordField1.getText());
-
-        //Mensaje Bienvenido
+        Respuesta res =log.getStatus(jTextField1.getText(), jPasswordField1.getText());
+        
+        
+        
+        //comparamos si la respuesta del webservices es afirmativa lo dejamos pasar a la ventana principal
+        if (res.getId() > 0)
+        {
+         //Mensaje Bienvenido
         alerta.mensaje("Bienvenido");
         Inicio welcome = new Inicio();
         welcome.setVisible(true);
         this.setVisible(false);
+        
+        
+        
+        
+        }
+        
+        
 
     }//GEN-LAST:event_jButton1ActionPerformed
 

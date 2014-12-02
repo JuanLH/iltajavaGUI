@@ -158,37 +158,37 @@ public class Inicio extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        Facturacion factura = new Facturacion(null, false);
+        Facturacion factura = new Facturacion(this, false);
         factura.setVisible(true);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-        BuscarFactura buscarfac = new BuscarFactura(null, false);
+        BuscarFactura buscarfac = new BuscarFactura(this, false);
         buscarfac.setVisible(true);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
-        RegistrarCliente regcliente = new RegistrarCliente(null, false);
+        RegistrarCliente regcliente = new RegistrarCliente(this, false);
         regcliente.setVisible(true);
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
-        BuscarCliente busccliente = new BuscarCliente(null, false);
+        BuscarCliente busccliente = new BuscarCliente(this, false);
         busccliente.setVisible(true);
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
-        RegistrarProducto regproducto = new RegistrarProducto(null, false);
+        RegistrarProducto regproducto = new RegistrarProducto(this, false);
         regproducto.setVisible(true);
     }//GEN-LAST:event_jMenuItem5ActionPerformed
 
     private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
-         BuscarProducto buscproducto = new BuscarProducto(null, false);
-         buscproducto.setVisible(true);
+         BuscarArticulo buscart = new BuscarArticulo(this, false);
+         buscart.setVisible(true);
     }//GEN-LAST:event_jMenuItem6ActionPerformed
 
     private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
-       RegistrarUsuario regus = new RegistrarUsuario(null, false);
+       RegistrarUsuario regus = new RegistrarUsuario(this, false);
        regus.setVisible(true);
     }//GEN-LAST:event_jMenuItem8ActionPerformed
 
@@ -197,7 +197,7 @@ public class Inicio extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem9ActionPerformed
 
     private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
-        ModificarUsuario modus = new ModificarUsuario(null, false);
+        ModificarUsuario modus = new ModificarUsuario(this, false);
         modus.setVisible(true);
     }//GEN-LAST:event_jMenuItem7ActionPerformed
 
