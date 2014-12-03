@@ -50,12 +50,10 @@ public class ClienteProducto {
         //return resource.request(javax.ws.rs.core.MediaType.APPLICATION_JSON).get(String.class);
     }
 
-   /* public <T> T insertar_producto(Class<T> responseType, String token, String informacion) throws ClientErrorException {
-        WebTarget resource = webTarget;
-        resource = resource.path(java.text.MessageFormat.format("insertarproducto/{0}/{1}", new Object[]{token, informacion}));
-        return resource.get(responseType);
+    public void insertar_producto(Object requestEntity, String token, String informacion) throws ClientErrorException {
+        webTarget.path(java.text.MessageFormat.format("insertarproducto/{0}/{1}", new Object[]{token, informacion})).request(javax.ws.rs.core.MediaType.APPLICATION_JSON).post(javax.ws.rs.client.Entity.entity(requestEntity, javax.ws.rs.core.MediaType.APPLICATION_JSON));
     }
-*/
+
     public String getJson() throws ClientErrorException {
         WebTarget resource = webTarget;
         return resource.request(javax.ws.rs.core.MediaType.APPLICATION_JSON).get(String.class);

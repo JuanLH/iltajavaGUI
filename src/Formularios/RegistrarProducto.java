@@ -4,6 +4,9 @@
  * and open the template in the editor.
  */
 package Formularios;
+
+import Clientes.ClienteProducto;
+
 /**
  *
  * @author Raul
@@ -241,7 +244,8 @@ public class RegistrarProducto extends javax.swing.JDialog {
     }//GEN-LAST:event_cantidadActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-     
+     ClienteProducto k = new ClienteProducto();
+     k.insertar_producto(jButton1, "", this.cantidad.getText());
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
