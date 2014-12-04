@@ -43,7 +43,7 @@ public class ClienteProducto {
         Gson json = new Gson();
         Respuesta respo = new Respuesta();
         resource = resource.path(java.text.MessageFormat.format("getproducto/{0}/{1}", new Object[]{token, nombre}));
-        //System.out.println(resource.request(javax.ws.rs.core.MediaType.APPLICATION_JSON).get(String.class));
+        System.out.println(resource.request(javax.ws.rs.core.MediaType.APPLICATION_JSON).get(String.class));
         String res=resource.request(javax.ws.rs.core.MediaType.APPLICATION_JSON).get(String.class);
         respo = json.fromJson(res, Respuesta.class);
         return respo;
