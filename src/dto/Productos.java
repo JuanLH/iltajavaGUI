@@ -11,17 +11,6 @@ package dto;
  */
 public class Productos 
 {
-    
- private int f_id;
-    private String f_nombre;
-    private String f_descripcion;
-    private int f_costo;
-    private int f_precioVenta;
-    private int f_precioAlquiler;
-    private String f_alquilerVenta;
-    private String f_cantidadALquiler;
-    private String f_cantidadVenta;
-    private String f_diasRecuperacion;
 
     public int getF_id() {
         return f_id;
@@ -55,52 +44,64 @@ public class Productos
         this.f_costo = f_costo;
     }
 
-    public int getF_precioVenta() {
-        return f_precioVenta;
+    public int getF_precio_venta() {
+        return f_precio_venta;
     }
 
-    public void setF_precioVenta(int f_precioVenta) {
-        this.f_precioVenta = f_precioVenta;
+    public void setF_precio_venta(int f_precio_venta) {
+        this.f_precio_venta = f_precio_venta;
     }
 
-    public int getF_precioAlquiler() {
-        return f_precioAlquiler;
+    public int getF_precio_alquiler() {
+        return f_precio_alquiler;
     }
 
-    public void setF_precioAlquiler(int f_precioAlquiler) {
-        this.f_precioAlquiler = f_precioAlquiler;
+    public void setF_precio_alquiler(int f_precio_alquiler) {
+        this.f_precio_alquiler = f_precio_alquiler;
     }
 
-    public String getF_alquilerVenta() {
-        return f_alquilerVenta;
+    public String getF_alquiler_venta() {
+        return f_alquiler_venta;
     }
 
-    public void setF_alquilerVenta(String f_alquilerVenta) {
-        this.f_alquilerVenta = f_alquilerVenta;
+    public void setF_alquiler_venta(String f_alquiler_venta) {
+        this.f_alquiler_venta = f_alquiler_venta;
     }
 
-    public String getF_cantidadALquiler() {
-        return f_cantidadALquiler;
+    public String getF_cantidad_alquiler() {
+        return f_cantidad_alquiler;
     }
 
-    public void setF_cantidadALquiler(String f_cantidadALquiler) {
-        this.f_cantidadALquiler = f_cantidadALquiler;
+    public void setF_cantidad_alquiler(String f_cantidad_alquiler) {
+        this.f_cantidad_alquiler = f_cantidad_alquiler;
     }
 
-    public String getF_cantidadVenta() {
-        return f_cantidadVenta;
+    public String getF_cantidad_venta() {
+        return f_cantidad_venta;
     }
 
-    public void setF_cantidadVenta(String f_cantidadVenta) {
-        this.f_cantidadVenta = f_cantidadVenta;
+    public void setF_cantidad_venta(String f_cantidad_venta) {
+        this.f_cantidad_venta = f_cantidad_venta;
     }
 
-    public String getF_diasRecuperacion() {
-        return f_diasRecuperacion;
+    public String getF_dias_recuperacion() {
+        return f_dias_recuperacion;
     }
 
-    public void setF_diasRecuperacion(String f_diasRecuperacion) {
-        this.f_diasRecuperacion = f_diasRecuperacion;
+    public void setF_dias_recuperacion(String f_dias_recuperacion) {
+        this.f_dias_recuperacion = f_dias_recuperacion;
     }
+    
+    private int f_id;
+    private String f_nombre;
+    private String f_descripcion;
+    private int f_costo;
+    private int f_precio_venta;
+    private int f_precio_alquiler;
+    private String f_alquiler_venta;
+    private String f_cantidad_alquiler;
+    private String f_cantidad_venta;
+    private String f_dias_recuperacion;
 
+    
 }

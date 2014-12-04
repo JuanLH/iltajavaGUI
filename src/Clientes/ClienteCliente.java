@@ -5,6 +5,8 @@
  */
 package Clientes;
 
+import com.google.gson.Gson;
+import dto.Respuesta;
 import javax.ws.rs.ClientErrorException;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.WebTarget;
@@ -25,7 +27,7 @@ import javax.ws.rs.client.WebTarget;
 public class ClienteCliente {
     private WebTarget webTarget;
     private Client client;
-    private static final String BASE_URI = "http://itla2-itlajavados.rhcloud.com/itlajava23/webresources";
+    private static final String BASE_URI = "http://itla2-itlajavados.rhcloud.com/itlajava38/webresources";
 
     public ClienteCliente() {
         client = javax.ws.rs.client.ClientBuilder.newClient();
@@ -41,11 +43,17 @@ public class ClienteCliente {
         System.out.println(javax.ws.rs.core.MediaType.APPLICATION_JSON);
     }
 
-    public String getCliente_nombre_apellido(String token, String id) throws ClientErrorException {
+    public Respuesta getCliente_nombre_apellido(String token, String id) throws ClientErrorException {
         WebTarget resource = webTarget;
+        Gson json = new Gson();
+        Respuesta respo = new Respuesta();
         resource = resource.path(java.text.MessageFormat.format("getcliente_nombre_apellido/{0}/{1}", new Object[]{token, id}));
        System.out.println(resource.request(javax.ws.rs.core.MediaType.APPLICATION_JSON).get(String.class));
-        return resource.request(javax.ws.rs.core.MediaType.APPLICATION_JSON).get(String.class);
+       String res = resource.request(javax.ws.rs.core.MediaType.APPLICATION_JSON).get(String.class); 
+       respo = json.fromJson(res, Respuesta.class);
+       
+       
+       return respo;
     }
 
     public String getCliente(String token) throws ClientErrorException {

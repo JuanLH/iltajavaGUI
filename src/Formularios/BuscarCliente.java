@@ -6,6 +6,15 @@
 package Formularios;
 
 import Clientes.ClienteCliente;
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParser;
+import dto.Respuesta;
+import dto.cliente;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -154,9 +163,101 @@ public class BuscarCliente extends javax.swing.JDialog {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jTextField1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyReleased
-        if("".equals(jTextField1.getText())){return;}
-        ClienteCliente buscar = new ClienteCliente();
-        buscar.getCliente_nombre_apellido("0a6077e8f50ce3b2c3a0b6aa19ccf1b1",jTextField1.getText());
+ 
+        try
+      {
+        
+        if("".equals(jTextField1.getText()))
+      {return;}
+      ClienteCliente buscarcliente = new ClienteCliente();
+      DefaultTableModel modelo = new DefaultTableModel();
+     
+      List<cliente> lista = new ArrayList<cliente>(); 
+      Respuesta res = buscarcliente.getCliente_nombre_apellido("0a6077e8f50ce3b2c3a0b6aa19ccf1b1",jTextField1.getText());
+      
+      
+      if (res.getId() > 0)
+      {   
+            Gson json = new Gson();
+         
+            JsonElement son = new JsonParser().parse(res.getMensaje());
+            JsonArray array = son.getAsJsonArray();
+   
+         
+          
+            System.out.println("con foreach");
+            for (JsonElement json2: array)
+            {
+                cliente clien = new cliente();
+                clien = json.fromJson(json2, cliente.class);
+                
+                lista.add(clien);
+                
+            }
+
+            
+            // Declaramos un vector de columnas
+            String[] col = {"ID","Nombre","Apellido","Direccion","Cedula","Telefono 1","Telefono 2","E-Mail"};
+                 
+            // ciclo for para agregar cada una de las columnas
+               for (int i=0;i<col.length;i++)
+                   modelo.addColumn(col[i]);
+              
+               int k;
+                for (cliente c: lista)
+            {    
+                
+                //System.out.println(c.getF_alquilerVenta());
+                k=0;
+                Object[] fila = new Object[10];
+                fila[k++]=(Object)c.getF_id();
+                fila[k++]=(Object)c.getF_nombre();
+                fila[k++]=(Object)c.getF_apellido();
+                fila[k++]=(Object)c.getF_direccion();
+                fila[k++]=(Object)c.getF_cedula();
+                fila[k++]=(Object)c.getF_telefono1();
+                fila[k++]=(Object)c.getF_telefono2();
+                fila[k++]=(Object)c.getF_email();
+                modelo.addRow(fila);
+                //System.out.println("Mensaje del webservice = "+c.getF_id());
+                
+            }
+                
+        
+           
+//             System.out.println("con lista");
+//            //
+//             int k;
+//            TypeToken<List<Productos>> token = new  TypeToken<List<Productos>>(){};
+//            List<Productos> lis = json.fromJson(res.getMensaje(),token.getType());
+//            // Ciclo for para agregar las filas
+//            for (Productos p: lis)
+//            {    
+//                
+//                System.out.println(p.getF_cantidadVenta());
+//                k=0;
+//                Object[] fila = new Object[11];
+//                fila[k++]=(Object)p.getF_id();
+//                fila[k++]=(Object)p.getF_nombre();
+//                fila[k++]=(Object)p.getF_descripcion();
+//                fila[k++]=(Object)p.getF_costo();
+//                fila[k++]=(Object)p.getF_precioVenta();
+//                fila[k++]=(Object)p.getF_precioAlquiler();
+//                fila[k++]=(Object)p.getF_alquilerVenta();
+//                fila[k++]=(Object)p.getF_cantidadALquiler();
+//                fila[k++]=(Object)p.getF_cantidadVenta();
+//                fila[k++]=(Object)p.getF_diasRecuperacion();
+//                modelo.addRow(fila);
+//                System.out.println("token = "+p.getF_id());
+//                
+//            }
+            jTable1.setModel(modelo);
+      }
+      }
+      catch(Exception e)
+              {
+               e.printStackTrace();
+              }
     }//GEN-LAST:event_jTextField1KeyReleased
 
     /**

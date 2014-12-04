@@ -152,7 +152,11 @@ public class BuscarArticulo extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       try
+ 
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jTextField1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyReleased
+      try
       {
         
         if("".equals(jTextField1.getText()))
@@ -174,7 +178,7 @@ public class BuscarArticulo extends javax.swing.JDialog {
          
           
             System.out.println("con foreach");
-            for (JsonElement json2: array)
+            for (JsonElement json2:array)
             {
                 Productos prod = new Productos();
                 prod = json.fromJson(json2, Productos.class);
@@ -195,19 +199,19 @@ public class BuscarArticulo extends javax.swing.JDialog {
                 for (Productos p: lista)
             {    
                 
-                System.out.println(p.getF_alquilerVenta());
+                System.out.println(p.getF_dias_recuperacion());
                 k=0;
                 Object[] fila = new Object[10];
                 fila[k++]=(Object)p.getF_id();
                 fila[k++]=(Object)p.getF_nombre();
                 fila[k++]=(Object)p.getF_descripcion();
                 fila[k++]=(Object)p.getF_costo();
-                fila[k++]=(Object)p.getF_precioVenta();
-                fila[k++]=(Object)p.getF_precioAlquiler();
-                fila[k++]=(Object)p.getF_alquilerVenta();
-                fila[k++]=(Object)p.getF_cantidadALquiler();
-                fila[k++]=(Object)p.getF_cantidadVenta();
-                fila[k++]=(Object)p.getF_diasRecuperacion();
+                fila[k++]=(Object)p.getF_precio_venta();
+                fila[k++]=(Object)p.getF_precio_alquiler();
+                fila[k++]=(Object)p.getF_alquiler_venta();
+                fila[k++]=(Object)p.getF_cantidad_alquiler();
+                fila[k++]=(Object)p.getF_cantidad_venta();
+                fila[k++]=(Object)p.getF_dias_recuperacion();
                 modelo.addRow(fila);
                 System.out.println("Mensaje del webservice = "+p.getF_id());
                 
@@ -248,10 +252,6 @@ public class BuscarArticulo extends javax.swing.JDialog {
               {
                e.printStackTrace();
               }
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jTextField1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyReleased
-      
     }//GEN-LAST:event_jTextField1KeyReleased
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
