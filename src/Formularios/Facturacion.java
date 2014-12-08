@@ -7,7 +7,7 @@ package Formularios;
 
 import Clases.cliente;
 import Clases.usuario;
-import com.sun.glass.events.KeyEvent;
+//import com.sun.glass.events.KeyEvent;
 import dto.DTOcliente;
 import dto.DTOusuario;
 import dto.DTOventaFactura;
@@ -15,6 +15,7 @@ import static dto.DTOventaFactura.TIPO_ALQUILER;
 import static dto.DTOventaFactura.TIPO_VENTA;
 import static dto.DTOventaFactura.addArticulo;
 import static dto.DTOventaFactura.formatearTabla;
+import java.awt.event.KeyEvent;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -150,6 +151,11 @@ public class Facturacion extends javax.swing.JDialog {
 
         jButton1.setFont(new java.awt.Font("Cambria", 1, 14)); // NOI18N
         jButton1.setText("Facturar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jComboBox1.setFont(new java.awt.Font("Cambria", 1, 14)); // NOI18N
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Debito", "Credito" }));
@@ -552,6 +558,10 @@ public class Facturacion extends javax.swing.JDialog {
     private void jTextField11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField11ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField11ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments

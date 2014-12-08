@@ -215,7 +215,7 @@ public class RegistrarUsuario extends javax.swing.JDialog {
          || pass1.getText().equals(""))
         {
          alerta.mensajeError(evt, "Todos los Campos son Obligatorios");
-         return;
+         
         }
          
          //este if es para confirmar la longitud de caracteres del campo nombre

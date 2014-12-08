@@ -6,8 +6,7 @@
 
 package Imagenes;
 
-import com.sun.glass.ui.Screen;
-import com.sun.glass.ui.Size;
+
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
