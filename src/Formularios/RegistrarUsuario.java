@@ -6,6 +6,11 @@
 package Formularios;
 
 import Clases.Mensajes;
+import Clases.Respuesta;
+import Clases.Usuario_1;
+import Clientes.HttpClientWebServices;
+import java.io.IOException;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -22,6 +27,50 @@ public class RegistrarUsuario extends javax.swing.JDialog {
       
     }
 
+    public String hacerGson() // metodo para hacer el Gson llamando los TXTFIELDs
+    {
+        Usuario_1 usu = new Usuario_1();
+        Respuesta resp = new Respuesta();
+        usu.setF_nombre(nombre.getText());
+        usu.setF_apellido(apellido.getText());
+        usu.setF_usuario(user.getText());
+        
+        usu.setF_clave(pass.getText());
+        
+        
+        usu.setF_proceso(checkBProceso.isSelected());
+        usu.setF_activo(checkBActivo.isSelected());
+        
+        
+        
+        return resp.ToJson(usu);
+        
+    }
+   static String clientPost(String url,String token,String gson)// metodo que cliente de el metodo
+    {
+        
+        
+        
+        try 
+        {
+            HttpClientWebServices client = new HttpClientWebServices(); // instancia de la clase HttpClientWebServices            
+            return client.HttpClientWebServices(url, token, gson); // Retorna un Gson Respuesta id = 1 si fue exitoso , Siempre asegurarse que el url sea el correcto si no te saldra la pagina 404
+        } 
+        catch (IOException ex) { 
+            return  "-1"+ex; 
+        
+        }  
+    }
+    
+    public String gsonRespuesta_Mensaje(String Gson) // metodo que retorna el mensaje del Ws para ponerlo en el labelRespuesta
+    {
+        Respuesta resp = new Respuesta();
+        resp=resp.FromJson(Gson);
+        
+        return resp.getMensaje();
+        
+    
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -45,11 +94,13 @@ public class RegistrarUsuario extends javax.swing.JDialog {
         jLabel3 = new javax.swing.JLabel();
         pass = new javax.swing.JPasswordField();
         pass1 = new javax.swing.JPasswordField();
+        checkBActivo = new javax.swing.JCheckBox();
+        checkBProceso = new javax.swing.JCheckBox();
+        labelRespuesta = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jButton2.setFont(new java.awt.Font("Cambria", 1, 14)); // NOI18N
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/1416345028_17-20.png"))); // NOI18N
         jButton2.setText("Cancelar");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -66,7 +117,6 @@ public class RegistrarUsuario extends javax.swing.JDialog {
         jLabel5.setText("Nombre:");
 
         jButton1.setFont(new java.awt.Font("Cambria", 1, 14)); // NOI18N
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/1416345006_04_Save_24x24.png"))); // NOI18N
         jButton1.setText("Registrar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -98,6 +148,13 @@ public class RegistrarUsuario extends javax.swing.JDialog {
         });
 
         pass1.setFont(new java.awt.Font("Cambria", 1, 14)); // NOI18N
+
+        checkBActivo.setText("Activo");
+
+        checkBProceso.setText("Proceso");
+        checkBProceso.setEnabled(false);
+
+        labelRespuesta.setText(".");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -145,6 +202,14 @@ public class RegistrarUsuario extends javax.swing.JDialog {
                         .addGap(10, 10, 10)
                         .addComponent(jLabel4)))
                 .addContainerGap(23, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(labelRespuesta)
+                    .addComponent(checkBActivo))
+                .addGap(28, 28, 28)
+                .addComponent(checkBProceso)
+                .addGap(40, 40, 40))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -178,9 +243,15 @@ public class RegistrarUsuario extends javax.swing.JDialog {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(user, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(checkBActivo)
+                    .addComponent(checkBProceso))
+                .addGap(10, 10, 10)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+                        .addComponent(labelRespuesta))
                     .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -209,7 +280,11 @@ public class RegistrarUsuario extends javax.swing.JDialog {
     }//GEN-LAST:event_passActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+    
+       
+        
+        
+           // TODO add your handling code here:
          Mensajes alerta = new Mensajes();
          if(user.getText().equals("") || pass.getText().equals("") || nombre.getText().equals("") || apellido.getText().equals("")
          || pass1.getText().equals(""))
@@ -247,8 +322,15 @@ public class RegistrarUsuario extends javax.swing.JDialog {
         {
              
         } 
+         if(pass.getText().equals(pass1.getText())){
+          String url="http://itla2-itlajavados.rhcloud.com/itlajava/webresources/usuario/insertar_usuario";
+        String token = "309812de6fe2c64e695cc4bdd8ae4b7f";
+        String Gson = hacerGson();
          
-         
+        System.out.print(Gson);
+        labelRespuesta.setText(gsonRespuesta_Mensaje(clientPost(url, token, Gson)));
+         }else
+             alerta.mensajeError(evt,"Password no son iguales");
          
          
          
@@ -299,6 +381,8 @@ public class RegistrarUsuario extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField apellido;
+    private javax.swing.JCheckBox checkBActivo;
+    private javax.swing.JCheckBox checkBProceso;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
@@ -308,6 +392,7 @@ public class RegistrarUsuario extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel labelRespuesta;
     private javax.swing.JTextField nombre;
     private javax.swing.JPasswordField pass;
     private javax.swing.JPasswordField pass1;
