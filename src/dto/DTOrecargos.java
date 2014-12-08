@@ -9,7 +9,7 @@ package dto;
  *
  * @author HiraldoTran
  */
-public class recargos {
+public class DTOrecargos {
     private int id;
     private int idAlquilerFactura;
     private int tipoFacturaAlquilerFactura;

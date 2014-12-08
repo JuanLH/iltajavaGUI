@@ -4,17 +4,21 @@
  * and open the template in the editor.
  */
 package Formularios;
+
+import Clases.Productos;
+import Clases.Respuesta;
 import Clientes.ClienteProducto;
-import com.google.common.reflect.TypeToken;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
-import dto.Productos;
-import dto.Respuesta;
+import static dto.DTOProductos.llenarArticulo;
+import static dto.DTOcliente.llenarCliente;
+import static dto.DTOgeneral.bloquearTabla;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Raul
@@ -46,6 +50,7 @@ public class BuscarArticulo extends javax.swing.JDialog {
         jTable1 = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -91,6 +96,14 @@ public class BuscarArticulo extends javax.swing.JDialog {
         jButton2.setFont(new java.awt.Font("Cambria", 1, 14)); // NOI18N
         jButton2.setText("Cancelar");
 
+        jButton3.setFont(new java.awt.Font("Cambria", 1, 14)); // NOI18N
+        jButton3.setText("Buscar");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -108,7 +121,9 @@ public class BuscarArticulo extends javax.swing.JDialog {
                                 .addContainerGap()
                                 .addComponent(jLabel2)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jButton3))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(331, 331, 331)
                                 .addComponent(jLabel1)))
@@ -121,10 +136,12 @@ public class BuscarArticulo extends javax.swing.JDialog {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jLabel1)
                 .addGap(37, 37, 37)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addGap(36, 36, 36)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel2))
+                    .addComponent(jButton3))
+                .addGap(33, 33, 33)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 358, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -152,73 +169,67 @@ public class BuscarArticulo extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
- 
+        if (jTable1.getSelectedRow()==-1)return;
+        llenarArticulo(jTable1);
+        this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jTextField1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyReleased
-      try
-      {
-        
-        if("".equals(jTextField1.getText()))
-      {return;}
-      ClienteProducto producto = new ClienteProducto();
-      DefaultTableModel modelo = new DefaultTableModel();
-     
-      List<Productos> lista = new ArrayList<Productos>(); 
-      Respuesta res = producto.getproduct_id_nombre("0a6077e8f50ce3b2c3a0b6aa19ccf1b1",jTextField1.getText());
-      
-      
-      if (res.getId() > 0)
-      {   
-            Gson json = new Gson();
-         
-            JsonElement son = new JsonParser().parse(res.getMensaje());
-            JsonArray array = son.getAsJsonArray();
-   
-         
-          
-            System.out.println("con foreach");
-            for (JsonElement json2:array)
-            {
-                Productos prod = new Productos();
-                prod = json.fromJson(json2, Productos.class);
-                
-                lista.add(prod);
-                
+        try {
+
+            if ("".equals(jTextField1.getText())) {
+                return;
             }
-               
-            
-            // Declaramos un vector de columnas
-            String[] col = {"ID","Nombre","Descripcion","Costo","Precio de Venta","Precio de Alquiler","Producto de Venta o Alquiler","Cantidad para alquiler","Cantidad para venta","Días de recuperacion"};
-                 
-            // ciclo for para agregar cada una de las columnas
-               for (int i=0;i<col.length;i++)
-                   modelo.addColumn(col[i]);
-              
-               int k;
-                for (Productos p: lista)
-            {    
+                ClienteProducto producto = new ClienteProducto();
+                DefaultTableModel modelo = new DefaultTableModel();
                 
-                System.out.println(p.getF_dias_recuperacion());
-                k=0;
-                Object[] fila = new Object[10];
-                fila[k++]=(Object)p.getF_id();
-                fila[k++]=(Object)p.getF_nombre();
-                fila[k++]=(Object)p.getF_descripcion();
-                fila[k++]=(Object)p.getF_costo();
-                fila[k++]=(Object)p.getF_precio_venta();
-                fila[k++]=(Object)p.getF_precio_alquiler();
-                fila[k++]=(Object)p.getF_alquiler_venta();
-                fila[k++]=(Object)p.getF_cantidad_alquiler();
-                fila[k++]=(Object)p.getF_cantidad_venta();
-                fila[k++]=(Object)p.getF_dias_recuperacion();
-                modelo.addRow(fila);
-                System.out.println("Mensaje del webservice = "+p.getF_id());
-                
-            }
-                
-        
-           
+            List<Productos> lista = new ArrayList<Productos>();
+            Respuesta res = producto.getproduct_nombre("0a6077e8f50ce3b2c3a0b6aa19ccf1b1", jTextField1.getText());
+
+            if (res.getId() > 0) {
+                Gson json = new Gson();
+
+                JsonElement son = new JsonParser().parse(res.getMensaje());
+                JsonArray array = son.getAsJsonArray();
+
+                System.out.println("con foreach");
+                for (JsonElement json2 : array) {
+                    Productos prod = new Productos();
+                    prod = json.fromJson(json2, Productos.class);
+
+                    lista.add(prod);
+
+                }
+
+                // Declaramos un vector de columnas
+                String[] col = {"ID", "Nombre", "Descripcion", "Costo", "Precio de Venta", "Precio de Alquiler", "Producto de Venta o Alquiler", "Cantidad para alquiler", "Cantidad para venta", "Días de recuperacion"};
+
+                // ciclo for para agregar cada una de las columnas
+                for (int i = 0; i < col.length; i++) {
+                    modelo.addColumn(col[i]);
+                }
+
+                int k;
+                for (Productos p : lista) {
+
+                    System.out.println(p.getF_dias_recuperacion());
+                    k = 0;
+                    Object[] fila = new Object[10];
+                    fila[k++] = (Object) p.getF_id();
+                    fila[k++] = (Object) p.getF_nombre();
+                    fila[k++] = (Object) p.getF_descripcion();
+                    fila[k++] = (Object) p.getF_costo();
+                    fila[k++] = (Object) p.getF_precio_venta();
+                    fila[k++] = (Object) p.getF_precio_alquiler();
+                    fila[k++] = (Object) p.getF_alquiler_venta();
+                    fila[k++] = (Object) p.getF_cantidad_alquiler();
+                    fila[k++] = (Object) p.getF_cantidad_venta();
+                    fila[k++] = (Object) p.getF_dias_recuperacion();
+                    modelo.addRow(fila);
+                    System.out.println("Mensaje del webservice = " + p.getF_id());
+
+                }
+
 //             System.out.println("con lista");
 //            //
 //             int k;
@@ -245,19 +256,22 @@ public class BuscarArticulo extends javax.swing.JDialog {
 //                System.out.println("token = "+p.getF_id());
 //                
 //            }
-            jTable1.setModel(modelo);
-      }
-      }
-      catch(Exception e)
-              {
-               e.printStackTrace();
-              }
+                jTable1.setModel(modelo);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        bloquearTabla(jTable1);
     }//GEN-LAST:event_jTextField1KeyReleased
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_jTable1MouseClicked
-    
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton3ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -303,6 +317,7 @@ public class BuscarArticulo extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;

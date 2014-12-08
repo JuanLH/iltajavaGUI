@@ -9,7 +9,7 @@ package dto;
  *
  * @author HiraldoTran
  */
-public class reciboAlquilerFactura {
+public class DTOreciboAlquilerFactura {
     private int id;
     private int idAlquilerFactura;
     private String tipoFacturaAlquilerFactura;

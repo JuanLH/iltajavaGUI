@@ -9,7 +9,7 @@ package dto;
  *
  * @author HiraldoTran
  */
-public class alquilerFactura {
+public class DTOalquilerFactura {
     private int id;
     private String dpo_factura;
     private int id_cliente;

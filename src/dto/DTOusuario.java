@@ -9,11 +9,13 @@ package dto;
  *
  * @author HiraldoTran
  */
-public class logins {
+public class DTOusuario {
     private int id;
+    private String nombre;
+    private String apellido;
     private String usuario;
-    private String token;
-    private String hora;
+    private String clave;
+    private boolean proceso;
     private boolean activo;
 
     public int getId() {
@@ -24,6 +26,22 @@ public class logins {
         this.id = id;
     }
 
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getApellido() {
+        return apellido;
+    }
+
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
+    }
+
     public String getUsuario() {
         return usuario;
     }
@@ -32,20 +50,20 @@ public class logins {
         this.usuario = usuario;
     }
 
-    public String getToken() {
-        return token;
+    public String getClave() {
+        return clave;
     }
 
-    public void setToken(String token) {
-        this.token = token;
+    public void setClave(String clave) {
+        this.clave = clave;
     }
 
-    public String getHora() {
-        return hora;
+    public boolean isProceso() {
+        return proceso;
     }
 
-    public void setHora(String hora) {
-        this.hora = hora;
+    public void setProceso(boolean proceso) {
+        this.proceso = proceso;
     }
 
     public boolean isActivo() {

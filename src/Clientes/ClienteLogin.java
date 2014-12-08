@@ -5,8 +5,9 @@
  */
 package Clientes;
 
+import Clases.Respuesta;
 import com.google.gson.Gson;
-import dto.Respuesta;
+import dto.DTORespuesta;
 import javax.ws.rs.ClientErrorException;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.WebTarget;
@@ -26,7 +27,7 @@ import javax.ws.rs.client.WebTarget;
 public class ClienteLogin {
     private WebTarget webTarget;
     private Client client;
-    private static final String BASE_URI = "http://itla2-itlajavados.rhcloud.com/itlajava38/webresources";
+    private static final String BASE_URI = "http://itla2-itlajavados.rhcloud.com/itlajava1/webresources";
 
     public ClienteLogin() {
         client = javax.ws.rs.client.ClientBuilder.newClient();

@@ -7,16 +7,17 @@ package Clientes;
 
 import Clases.Respuesta;
 import com.google.gson.Gson;
+import dto.DTORespuesta;
 import javax.ws.rs.ClientErrorException;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.WebTarget;
 
 /**
- * Jersey REST client generated for REST resource:Webservice_Producto
- * [producto]<br>
+ * Jersey REST client generated for REST resource:Webservice_Venta_factura
+ * [venta_factura]<br>
  * USAGE:
  * <pre>
- *        ClienteProducto client = new ClienteProducto();
+ *        ClienteVenta_Factura client = new ClienteVenta_Factura();
  *        Object response = client.XXX(...);
  *        // do whatever with response
  *        client.close();
@@ -24,43 +25,30 @@ import javax.ws.rs.client.WebTarget;
  *
  * @author Raul
  */
-public class ClienteProducto {
+public class ClienteVenta_Factura {
     private WebTarget webTarget;
     private Client client;
-    private static final String BASE_URI = "http://itla2-itlajavados.rhcloud.com/itlajava1/webresources";
+    private static final String BASE_URI = "http://itla2-itlajavados.rhcloud.com/itlajava/webresources";
 
-    public ClienteProducto() {
+    public ClienteVenta_Factura() {
         client = javax.ws.rs.client.ClientBuilder.newClient();
-        webTarget = client.target(BASE_URI).path("producto");
+        webTarget = client.target(BASE_URI).path("venta_factura");
     }
 
     public void putJson(Object requestEntity) throws ClientErrorException {
         webTarget.request(javax.ws.rs.core.MediaType.APPLICATION_JSON).put(javax.ws.rs.client.Entity.entity(requestEntity, javax.ws.rs.core.MediaType.APPLICATION_JSON));
     }
 
-    public String getproduct_id_nombre_pag() throws ClientErrorException {
-        return webTarget.path("getproducto").request().post(null, String.class);
+    public void insertar_venta_factura(Object requestEntity, String token, String informacion) throws ClientErrorException {
+        webTarget.path(java.text.MessageFormat.format("insertar_venta_factura/{0}/{1}", new Object[]{token, informacion})).request(javax.ws.rs.core.MediaType.APPLICATION_JSON).post(javax.ws.rs.client.Entity.entity(requestEntity, javax.ws.rs.core.MediaType.APPLICATION_JSON));
     }
 
-    public Respuesta getproduct_id(String token, String id) throws ClientErrorException {
+    public Respuesta getfactura_id(String token, String id) throws ClientErrorException {
         WebTarget resource = webTarget;
         Gson json = new Gson();
         Respuesta respo = new Respuesta();
-        resource = resource.path(java.text.MessageFormat.format("getproductoId/{0}/{1}", new Object[]{token, id}));
-        String res = resource.request(javax.ws.rs.core.MediaType.APPLICATION_JSON).get(String.class);
-        respo = json.fromJson(res, Respuesta.class);
-        return respo;
-    }
-
-    public String insertar_producto() throws ClientErrorException {
-        return webTarget.path("insertarproducto").request().post(null, String.class);
-    }
-
-    public Respuesta getproduct_nombre(String token, String nombre) throws ClientErrorException {
-        WebTarget resource = webTarget;
-        Gson json = new Gson();
-        Respuesta respo = new Respuesta();
-        resource = resource.path(java.text.MessageFormat.format("getproducto/{0}/{1}", new Object[]{token, nombre}));
+        resource = resource.path(java.text.MessageFormat.format("getproductos/{0}/{1}", new Object[]{token, id}));
+        System.out.println(resource.request(javax.ws.rs.core.MediaType.APPLICATION_JSON).get(String.class));
         String res = resource.request(javax.ws.rs.core.MediaType.APPLICATION_JSON).get(String.class);
         respo = json.fromJson(res, Respuesta.class);
         return respo;

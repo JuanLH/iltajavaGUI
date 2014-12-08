@@ -5,6 +5,18 @@
  */
 package Formularios;
 
+import Clases.Respuesta;
+import Clases.ventaFactura;
+import Clientes.ClienteVenta_Factura;
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParser;
+import dto.DTOventaFactura;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Raul
@@ -36,6 +48,8 @@ public class BuscarFactura extends javax.swing.JDialog {
         jTextField1 = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        jComboBox1 = new javax.swing.JComboBox();
+        jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -52,6 +66,16 @@ public class BuscarFactura extends javax.swing.JDialog {
         jLabel2.setText("Buscar por ID");
 
         jTextField1.setFont(new java.awt.Font("Cambria", 1, 14)); // NOI18N
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
+        jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextField1KeyReleased(evt);
+            }
+        });
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -66,6 +90,15 @@ public class BuscarFactura extends javax.swing.JDialog {
         ));
         jScrollPane1.setViewportView(jTable1);
 
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Venta Factura", "Alquiler Factura" }));
+
+        jButton3.setText("Buscar");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -73,20 +106,23 @@ public class BuscarFactura extends javax.swing.JDialog {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton2)
-                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 470, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
                             .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButton2))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel2)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(290, 290, 290)))
+                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButton3)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -97,12 +133,14 @@ public class BuscarFactura extends javax.swing.JDialog {
                 .addGap(38, 38, 38)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton3))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE)
+                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)
                     .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -121,6 +159,125 @@ public class BuscarFactura extends javax.swing.JDialog {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1ActionPerformed
+
+    private void jTextField1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyReleased
+
+    }//GEN-LAST:event_jTextField1KeyReleased
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+       if (jComboBox1.getSelectedItem().equals("Venta Factura"))
+       {
+           
+        try
+      {
+        
+      if("".equals(jTextField1.getText()))
+      {return;}
+      ClienteVenta_Factura buscarventafactura = new ClienteVenta_Factura();
+      DefaultTableModel modelo = new DefaultTableModel();
+     
+      List<ventaFactura> lista = new ArrayList<ventaFactura>(); 
+      Respuesta res = buscarventafactura.getfactura_id("0a6077e8f50ce3b2c3a0b6aa19ccf1b1",jTextField1.getText());
+      
+      
+      if (res.getId() > 0)
+      {   
+            Gson json = new Gson();
+         
+            JsonElement son = new JsonParser().parse(res.getMensaje());
+            JsonArray array = son.getAsJsonArray();
+   
+         
+          
+            System.out.println("con foreach");
+            for (JsonElement json2: array)
+            {
+                ventaFactura ventafactura = new ventaFactura();
+                ventafactura = json.fromJson(json2, ventaFactura.class);
+                
+                lista.add(ventafactura);
+                
+            }
+
+            
+            // Declaramos un vector de columnas
+            String[] col = {"ID","Tipo Factura","ID Cliente","ID Usuario","Monto","ID Orden","Fecha","Hecha por","Balance","Pagado"};
+                 
+            // ciclo for para agregar cada una de las columnas
+               for (int i=0;i<col.length;i++)
+                   modelo.addColumn(col[i]);
+              
+               int k;
+                for (ventaFactura vf: lista)
+            {    
+               
+//    private int f_id_t_usuario;
+//    private int f_monto;
+//    private int f_id_t_orden;
+//    private String f_fecha;
+//    private String f_hecha_por;
+//    private int f_balance;
+//    private boolean f_pagada;
+                
+                //System.out.println(c.getF_alquilerVenta());
+                k=0;
+                Object[] fila = new Object[10];
+                fila[k++]=(Object)vf.getF_id();
+                fila[k++]=(Object)vf.getF_tipo_factura();
+                fila[k++]=(Object)vf.getF_id_t_cliente();
+                fila[k++]=(Object)vf.getF_id_t_usuario();
+                fila[k++]=(Object)vf.getF_monto();
+                fila[k++]=(Object)vf.getF_id_t_orden();
+                fila[k++]=(Object)vf.getF_fecha();
+                fila[k++]=(Object)vf.getF_hecha_por();
+                fila[k++]=(Object)vf.getF_balance();
+                fila[k++]=(Object)vf.isF_pagada();
+                modelo.addRow(fila);
+                //System.out.println("Mensaje del webservice = "+c.getF_id());
+                
+            }
+                
+        
+           
+//             System.out.println("con lista");
+//            //
+//             int k;
+//            TypeToken<List<Productos>> token = new  TypeToken<List<Productos>>(){};
+//            List<Productos> lis = json.fromJson(res.getMensaje(),token.getType());
+//            // Ciclo for para agregar las filas
+//            for (Productos p: lis)
+//            {    
+//                
+//                System.out.println(p.getF_cantidadVenta());
+//                k=0;
+//                Object[] fila = new Object[11];
+//                fila[k++]=(Object)p.getF_id();
+//                fila[k++]=(Object)p.getF_nombre();
+//                fila[k++]=(Object)p.getF_descripcion();
+//                fila[k++]=(Object)p.getF_costo();
+//                fila[k++]=(Object)p.getF_precioVenta();
+//                fila[k++]=(Object)p.getF_precioAlquiler();
+//                fila[k++]=(Object)p.getF_alquilerVenta();
+//                fila[k++]=(Object)p.getF_cantidadALquiler();
+//                fila[k++]=(Object)p.getF_cantidadVenta();
+//                fila[k++]=(Object)p.getF_diasRecuperacion();
+//                modelo.addRow(fila);
+//                System.out.println("token = "+p.getF_id());
+//                
+//            }
+            jTable1.setModel(modelo);
+      }
+      }
+      catch(Exception e)
+              {
+               e.printStackTrace();
+              }
+       }
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -167,6 +324,8 @@ public class BuscarFactura extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JComboBox jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
