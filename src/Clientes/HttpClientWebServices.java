@@ -36,6 +36,6 @@ public class HttpClientWebServices {
            return postMeto.getResponseBodyAsString();
             
         }
-        return "-1"+postMeto.getResponseBodyAsString();
+        return postMeto.getResponseBodyAsString();
     }
 }
