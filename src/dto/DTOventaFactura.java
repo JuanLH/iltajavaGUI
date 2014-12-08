@@ -61,9 +61,9 @@ public class DTOventaFactura {
         }
     }
     
-    public static void calcularMonto(JTextField subtotal,JTextField itbis,JTextField total)
+    public  static void calcularMonto(JTextField subtotal,JTextField itbis,JTextField total)
     {
-        //total.setText(String.valueOf(this.total));
-        //itbis.setText(""+(total*0.18f));
+      // total.setText(""+this.total);
+      // itbis.setText(""+(total*0.18f));
     }
 }

@@ -12,6 +12,7 @@ import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
+import com.sun.glass.events.KeyEvent;
 import static dto.DTOProductos.llenarArticulo;
 import static dto.DTOcliente.llenarCliente;
 import static dto.DTOgeneral.bloquearTabla;
@@ -62,6 +63,9 @@ public class BuscarArticulo extends javax.swing.JDialog {
 
         jTextField1.setFont(new java.awt.Font("Cambria", 1, 14)); // NOI18N
         jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextField1KeyPressed(evt);
+            }
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 jTextField1KeyReleased(evt);
             }
@@ -169,20 +173,30 @@ public class BuscarArticulo extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        if (jTable1.getSelectedRow()==-1)return;
+        if (jTable1.getSelectedRow() == -1) {
+            return;
+        }
         llenarArticulo(jTable1);
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jTextField1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyReleased
+
+    }//GEN-LAST:event_jTextField1KeyReleased
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTable1MouseClicked
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         try {
 
             if ("".equals(jTextField1.getText())) {
                 return;
             }
-                ClienteProducto producto = new ClienteProducto();
-                DefaultTableModel modelo = new DefaultTableModel();
-                
+            ClienteProducto producto = new ClienteProducto();
+            DefaultTableModel modelo = new DefaultTableModel();
+
             List<Productos> lista = new ArrayList<Productos>();
             Respuesta res = producto.getproduct_nombre("0a6077e8f50ce3b2c3a0b6aa19ccf1b1", jTextField1.getText());
 
@@ -262,15 +276,101 @@ public class BuscarArticulo extends javax.swing.JDialog {
             e.printStackTrace();
         }
         bloquearTabla(jTable1);
-    }//GEN-LAST:event_jTextField1KeyReleased
-
-    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTable1MouseClicked
-
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jTextField1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            try {
+
+                if ("".equals(jTextField1.getText())) {
+                    return;
+                }
+                ClienteProducto producto = new ClienteProducto();
+                DefaultTableModel modelo = new DefaultTableModel();
+
+                List<Productos> lista = new ArrayList<Productos>();
+                Respuesta res = producto.getproduct_nombre("0a6077e8f50ce3b2c3a0b6aa19ccf1b1", jTextField1.getText());
+
+                if (res.getId() > 0) {
+                    Gson json = new Gson();
+
+                    JsonElement son = new JsonParser().parse(res.getMensaje());
+                    JsonArray array = son.getAsJsonArray();
+
+                    System.out.println("con foreach");
+                    for (JsonElement json2 : array) {
+                        Productos prod = new Productos();
+                        prod = json.fromJson(json2, Productos.class);
+
+                        lista.add(prod);
+
+                    }
+
+                    // Declaramos un vector de columnas
+                    String[] col = {"ID", "Nombre", "Descripcion", "Costo", "Precio de Venta", "Precio de Alquiler", "Producto de Venta o Alquiler", "Cantidad para alquiler", "Cantidad para venta", "Días de recuperacion"};
+
+                    // ciclo for para agregar cada una de las columnas
+                    for (int i = 0; i < col.length; i++) {
+                        modelo.addColumn(col[i]);
+                    }
+
+                    int k;
+                    for (Productos p : lista) {
+
+                        System.out.println(p.getF_dias_recuperacion());
+                        k = 0;
+                        Object[] fila = new Object[10];
+                        fila[k++] = (Object) p.getF_id();
+                        fila[k++] = (Object) p.getF_nombre();
+                        fila[k++] = (Object) p.getF_descripcion();
+                        fila[k++] = (Object) p.getF_costo();
+                        fila[k++] = (Object) p.getF_precio_venta();
+                        fila[k++] = (Object) p.getF_precio_alquiler();
+                        fila[k++] = (Object) p.getF_alquiler_venta();
+                        fila[k++] = (Object) p.getF_cantidad_alquiler();
+                        fila[k++] = (Object) p.getF_cantidad_venta();
+                        fila[k++] = (Object) p.getF_dias_recuperacion();
+                        modelo.addRow(fila);
+                        System.out.println("Mensaje del webservice = " + p.getF_id());
+
+                    }
+
+//             System.out.println("con lista");
+//            //
+//             int k;
+//            TypeToken<List<Productos>> token = new  TypeToken<List<Productos>>(){};
+//            List<Productos> lis = json.fromJson(res.getMensaje(),token.getType());
+//            // Ciclo for para agregar las filas
+//            for (Productos p: lis)
+//            {    
+//                
+//                System.out.println(p.getF_cantidadVenta());
+//                k=0;
+//                Object[] fila = new Object[11];
+//                fila[k++]=(Object)p.getF_id();
+//                fila[k++]=(Object)p.getF_nombre();
+//                fila[k++]=(Object)p.getF_descripcion();
+//                fila[k++]=(Object)p.getF_costo();
+//                fila[k++]=(Object)p.getF_precioVenta();
+//                fila[k++]=(Object)p.getF_precioAlquiler();
+//                fila[k++]=(Object)p.getF_alquilerVenta();
+//                fila[k++]=(Object)p.getF_cantidadALquiler();
+//                fila[k++]=(Object)p.getF_cantidadVenta();
+//                fila[k++]=(Object)p.getF_diasRecuperacion();
+//                modelo.addRow(fila);
+//                System.out.println("token = "+p.getF_id());
+//                
+//            }
+                    jTable1.setModel(modelo);
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            bloquearTabla(jTable1);
+        }
+
+
+    }//GEN-LAST:event_jTextField1KeyPressed
 
     /**
      * @param args the command line arguments
