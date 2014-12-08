@@ -41,4 +41,11 @@ public class Respuesta {
         return respuesta;
     }
     
+    public Respuesta FromJson(String gson)
+    {
+        Gson json = new Gson();
+        Respuesta resp = json.fromJson(gson, Respuesta.class);
+        return resp; 
+        
+    }
 }
