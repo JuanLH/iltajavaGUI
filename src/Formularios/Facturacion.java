@@ -5,8 +5,10 @@
  */
 package Formularios;
 
+import Clases.Mensajes;
 import Clases.cliente;
 import Clases.usuario;
+import Imagenes.Imagenes;
 //import com.sun.glass.events.KeyEvent;
 import dto.DTOcliente;
 import dto.DTOusuario;
@@ -89,6 +91,11 @@ public class Facturacion extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                jPanel1MouseMoved(evt);
+            }
+        });
 
         jLabel12.setFont(new java.awt.Font("Cambria", 1, 14)); // NOI18N
         jLabel12.setText("Cantidad");
@@ -99,6 +106,11 @@ public class Facturacion extends javax.swing.JDialog {
         jLabel1.setText("Facturacion");
 
         jTextField10.setFont(new java.awt.Font("Cambria", 1, 14)); // NOI18N
+        jTextField10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField10ActionPerformed(evt);
+            }
+        });
         jTextField10.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 jTextField10KeyPressed(evt);
@@ -112,7 +124,13 @@ public class Facturacion extends javax.swing.JDialog {
         jLabel2.setText("ID");
 
         jLabel13.setFont(new java.awt.Font("Cambria", 1, 14)); // NOI18N
+        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/buscar.png"))); // NOI18N
         jLabel13.setText("jLabel13");
+        jLabel13.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                jLabel13MouseMoved(evt);
+            }
+        });
         jLabel13.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel13MouseClicked(evt);
@@ -140,6 +158,11 @@ public class Facturacion extends javax.swing.JDialog {
         });
 
         jTextField4.setFont(new java.awt.Font("Cambria", 1, 14)); // NOI18N
+        jTextField4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField4ActionPerformed(evt);
+            }
+        });
 
         jTextField5.setFont(new java.awt.Font("Cambria", 1, 14)); // NOI18N
 
@@ -212,7 +235,13 @@ public class Facturacion extends javax.swing.JDialog {
         jLabel14.setText("SubTotal:");
 
         jLabel9.setFont(new java.awt.Font("Cambria", 1, 14)); // NOI18N
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/buscar.png"))); // NOI18N
         jLabel9.setText("jLabel9");
+        jLabel9.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                jLabel9MouseMoved(evt);
+            }
+        });
         jLabel9.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel9MouseClicked(evt);
@@ -223,7 +252,13 @@ public class Facturacion extends javax.swing.JDialog {
         jLabel15.setText("ITBIS");
 
         jLabel10.setFont(new java.awt.Font("Cambria", 1, 14)); // NOI18N
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/buscar.png"))); // NOI18N
         jLabel10.setText("jLabel10");
+        jLabel10.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                jLabel10MouseMoved(evt);
+            }
+        });
         jLabel10.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel10MouseClicked(evt);
@@ -247,6 +282,11 @@ public class Facturacion extends javax.swing.JDialog {
 
         jLabel18.setFont(new java.awt.Font("Cambria", 1, 14)); // NOI18N
         jLabel18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/1416344964_new10-20.png"))); // NOI18N
+        jLabel18.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                jLabel18MouseMoved(evt);
+            }
+        });
         jLabel18.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel18MouseClicked(evt);
@@ -277,7 +317,7 @@ public class Facturacion extends javax.swing.JDialog {
                         .addGap(10, 10, 10)
                         .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(10, 10, 10)
-                        .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(36, 36, 36)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -317,16 +357,15 @@ public class Facturacion extends javax.swing.JDialog {
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addGap(98, 98, 98)
                                         .addComponent(jLabel12))))
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(4, 4, 4)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(10, 10, 10)
-                                .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(14, 14, 14)
                         .addComponent(jLabel7)
@@ -491,6 +530,7 @@ public class Facturacion extends javax.swing.JDialog {
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void jLabel13MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel13MouseClicked
+        Imagenes.setImagen(jLabel13, "buscar.png");
         BuscarArticulo buscar = new BuscarArticulo(null, rootPaneCheckingEnabled);
         buscar.setVisible(true);
         jTextField3.setText(dto.DTOProductos.getProducto().getF_id()+"");
@@ -503,6 +543,7 @@ public class Facturacion extends javax.swing.JDialog {
     }//GEN-LAST:event_jLabel10MouseClicked
 
     private void jLabel9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel9MouseClicked
+        Imagenes.setImagen(jLabel9, "buscar.png");
         BuscarCliente buscar = new BuscarCliente(null, rootPaneCheckingEnabled);
         buscar.setVisible(true);
         cliente c1 = DTOcliente.getCliente();
@@ -530,6 +571,7 @@ public class Facturacion extends javax.swing.JDialog {
             }
             addArticulo(dto.DTOProductos.getProducto(), Integer.valueOf(jTextField10.getText()), jTable1, tipo);
             DTOventaFactura.calcularMonto(jTextField11, jTextField12, jTextField13);
+            jComboBox3.setEnabled(false);
             jTextField13.setText(""+DTOventaFactura.total);
             jTextField12.setText(""+DTOventaFactura.total * 0.18f);
             jTextField11.setText(""+DTOventaFactura.total * 0.82f);
@@ -545,8 +587,52 @@ public class Facturacion extends javax.swing.JDialog {
     }//GEN-LAST:event_jTextField11ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        if ("".equals(jTextField4.getText()))
+            { msgValidacion();return;}
+        if ("".equals(jTextField5.getText()))
+            { msgValidacion();return;}
+        if ("".equals(jTextField6.getText()))
+            { msgValidacion();return;}
+        
+        
     }//GEN-LAST:event_jButton1ActionPerformed
+    
+    void msgValidacion()
+    {
+        Mensajes msg = new Mensajes();
+        msg.mensajeError(null, "Todos los Campos son obligatorios");
+    }
+    
+    private void jTextField10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField10ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField10ActionPerformed
+
+    private void jLabel9MouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel9MouseMoved
+        Imagenes.setImagen(jLabel9, "buscar2.png");
+    }//GEN-LAST:event_jLabel9MouseMoved
+
+    private void jPanel1MouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseMoved
+        Imagenes.setImagen(jLabel9, "buscar.png");
+        Imagenes.setImagen(jLabel13, "buscar.png");
+        Imagenes.setImagen(jLabel18, "nuevo.png");
+        Imagenes.setImagen(jLabel10, "buscar.png");
+    }//GEN-LAST:event_jPanel1MouseMoved
+
+    private void jLabel13MouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel13MouseMoved
+        Imagenes.setImagen(jLabel13, "buscar2.png");
+    }//GEN-LAST:event_jLabel13MouseMoved
+
+    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField4ActionPerformed
+
+    private void jLabel18MouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel18MouseMoved
+        Imagenes.setImagen(jLabel18, "nuevo2.png");
+    }//GEN-LAST:event_jLabel18MouseMoved
+
+    private void jLabel10MouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel10MouseMoved
+        Imagenes.setImagen(jLabel10, "buscar2.png");// TODO add your handling code here:
+    }//GEN-LAST:event_jLabel10MouseMoved
 
     /**
      * @param args the command line arguments
