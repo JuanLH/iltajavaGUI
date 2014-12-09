@@ -18,6 +18,7 @@ import Clientes.ClienteAlquilerFac;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 import Clases.alquilerFactura;
+import Clientes.genericMehod;
 
 /**
  *

@@ -11,6 +11,13 @@ import dto.DTORespuesta;
 import javax.ws.rs.ClientErrorException;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.WebTarget;
+import Clases.ventaFactura;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import org.apache.http.HttpResponse;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.DefaultHttpClient;
 
 /**
  * Jersey REST client generated for REST resource:Webservice_Venta_factura
@@ -49,10 +56,14 @@ public class ClienteVenta_Factura {
         Respuesta respo = new Respuesta();
         resource = resource.path(java.text.MessageFormat.format("/getfactura_id/{0}/{1}", new Object[]{token, id}));
         System.out.println(resource.request(javax.ws.rs.core.MediaType.APPLICATION_JSON).get(String.class));
-        String res = resource.request(javax.ws.rs.core.MediaType.APPLICATION_JSON).get(String.class);
+        String res= resource.request(javax.ws.rs.core.MediaType.APPLICATION_JSON).get(String.class);
+        
         respo = json.fromJson(res, Respuesta.class);
+        System.out.println(res);
         return respo;
     }
+    
+     
 
     public String getJson() throws ClientErrorException {
         WebTarget resource = webTarget;
