@@ -168,7 +168,7 @@ public class ModificarUsuario extends javax.swing.JDialog {
         ClienteHttpPut modificar = new ClienteHttpPut();
         try {
             //modificar.HttpClientWebServices("http://itla2-itlajavados.rhcloud.com/itlajava/webresources/usuario/modificar_pass", "0a6077e8f50ce3b2c3a0b6aa19ccf1b1", jPasswordField2.getText(), id.getText());
-            System.out.println(modificar.HttpClientWebServices("http://itla2-itlajavados.rhcloud.com/itlajava/webresources/usuario/modificar_pass", "0a6077e8f50ce3b2c3a0b6aa19ccf1b1", jPasswordField2.getText(), id.getText()));
+            System.out.println(modificar.HttpClientWebServices("http://itla2-itlajavados.rhcloud.com/itlajava/webresources/usuario/modificar_pass", "f735557705054902bf33232d2bccdc77", jPasswordField2.getText(), id.getText()));
         } catch (IOException ex) {
             //Logger.getLogger(MeodificarUsuario.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("Error de la base de datos");

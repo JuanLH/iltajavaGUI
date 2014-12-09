@@ -35,13 +35,13 @@ public class ClienteHttpPut {
      
         if(postMeto.getStatusCode()==HttpStatus.SC_OK){
             
-           //return postMeto.getResponseBodyAsString();
-            System.out.println("Hecho");
+           return postMeto.getResponseBodyAsString();
+            //System.out.println("Hecho");
             
         }
-        //return postMeto.getResponseBodyAsString();
-        System.out.println("Error");
-        return null;
+        return postMeto.getResponseBodyAsString();
+        //System.out.println("Error");
+        //return null;
     }
     
 }
