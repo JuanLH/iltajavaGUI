@@ -26,7 +26,7 @@ public class DTOventaFactura {
     
     public static void formatearTabla(JTable tabla) {
 
-        String[] col = {"ID", "Nombre", "Descripcion", "Precio", "Tipo", "Cantidad", "Días recuperacion","Importe"};
+        String[] col = {"ID", "Nombre", "Descripcion", "Precio", "Cantidad", "Días recuperacion","Importe"};
         for (int i = 0; i < col.length; i++) {
             modelo.addColumn(col[i]);
         }
@@ -51,7 +51,6 @@ public class DTOventaFactura {
                 price = p.getF_precio_alquiler();
             
             fila[k++] = (Object) price;
-            fila[k++] = (Object) tipo;
             fila[k++] = (Object) cantidad;
             fila[k++] = (Object) p.getF_dias_recuperacion();
             fila[k++] = (Object) (cantidad * price);

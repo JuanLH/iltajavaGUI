@@ -25,10 +25,10 @@ public class Login extends javax.swing.JFrame {
      * Creates new form Login
      */
     public Login() {
-         try {
-            UIManager.setLookAndFeel(new WindowsLookAndFeel());
-        } catch (Exception e) {
-        }
+//         try {
+//            UIManager.setLookAndFeel(new WindowsLookAndFeel());
+//        } catch (Exception e) {
+//        }
         initComponents();
     }
 
