@@ -14,8 +14,10 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
 import dto.DTOventaFactura;
 import java.util.ArrayList;
+import Clientes.ClienteAlquilerFac;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
+import Clases.alquilerFactura;
 
 /**
  *
@@ -199,20 +201,15 @@ public class BuscarFactura extends javax.swing.JDialog {
                 if (res.getId() == 1)
                 {   
                     Gson json = new Gson();
-         
                     JsonElement son = new JsonParser().parse(res.getMensaje());
-                    JsonArray array = son.getAsJsonArray();
-   
-         
-          
-                    System.out.println("con foreach");
-                    for (JsonElement json2: array)
-                    {
+                    //JsonParser array = son.getAsString();
+                    
+                        System.out.println("con foreach");
+                  
                         ventaFactura ventafactura = new ventaFactura();
-                        ventafactura = json.fromJson(json2, ventaFactura.class);
+                        ventafactura = json.fromJson(son,ventaFactura.class);
+                        System.out.println(ventafactura.getF_hecha_por());
                 
-                        lista.add(ventafactura);
-                    }
 
             
                     // Declaramos un vector de columnas
@@ -222,66 +219,25 @@ public class BuscarFactura extends javax.swing.JDialog {
                     for (int i=0;i<col.length;i++)
                     {
                         modelo.addColumn(col[i]);
-                    }    
-              
-                    int k;
-                    for (ventaFactura vf: lista)
-                    {    
-               
-                        //    private int f_id_t_usuario;
-                        //    private int f_monto;
-                        //    private int f_id_t_orden;
-                        //    private String f_fecha;
-                        //    private String f_hecha_por;
-                        //    private int f_balance;
-                        //    private boolean f_pagada;
-                
-                        //System.out.println(c.getF_alquilerVenta());
+                    }                  
+                        int k;   
                         k=0;
                         Object[] fila = new Object[10];
-                        fila[k++]=(Object)vf.getF_id();
-                        fila[k++]=(Object)vf.getF_tipo_factura();
-                        fila[k++]=(Object)vf.getF_id_t_cliente();
-                        fila[k++]=(Object)vf.getF_id_t_usuario();
-                        fila[k++]=(Object)vf.getF_monto();
-                        fila[k++]=(Object)vf.getF_id_t_orden();
-                        fila[k++]=(Object)vf.getF_fecha();
-                        fila[k++]=(Object)vf.getF_hecha_por();
-                        fila[k++]=(Object)vf.getF_balance();
-                        fila[k++]=(Object)vf.isF_pagada();
+                        fila[k++]=(Object)ventafactura.getF_id();
+                        fila[k++]=(Object)ventafactura.getF_tipo_factura();
+                        fila[k++]=(Object)ventafactura.getF_id_t_cliente();
+                        fila[k++]=(Object)ventafactura.getF_id_t_usuario();
+                        fila[k++]=(Object)ventafactura.getF_monto();
+                        fila[k++]=(Object)ventafactura.getF_id_t_orden();
+                        fila[k++]=(Object)ventafactura.getF_fecha();
+                        fila[k++]=(Object)ventafactura.getF_hecha_por();
+                        fila[k++]=(Object)ventafactura.getF_balance();
+                        fila[k++]=(Object)ventafactura.isF_pagada();
                         modelo.addRow(fila);
-                        //System.out.println("Mensaje del webservice = "+c.getF_id());
-                    }
-                
-        
-           
-//             System.out.println("con lista");
-//            //
-//             int k;
-//            TypeToken<List<Productos>> token = new  TypeToken<List<Productos>>(){};
-//            List<Productos> lis = json.fromJson(res.getMensaje(),token.getType());
-//            // Ciclo for para agregar las filas
-//            for (Productos p: lis)
-//            {    
-//                
-//                System.out.println(p.getF_cantidadVenta());
-//                k=0;
-//                Object[] fila = new Object[11];
-//                fila[k++]=(Object)p.getF_id();
-//                fila[k++]=(Object)p.getF_nombre();
-//                fila[k++]=(Object)p.getF_descripcion();
-//                fila[k++]=(Object)p.getF_costo();
-//                fila[k++]=(Object)p.getF_precioVenta();
-//                fila[k++]=(Object)p.getF_precioAlquiler();
-//                fila[k++]=(Object)p.getF_alquilerVenta();
-//                fila[k++]=(Object)p.getF_cantidadALquiler();
-//                fila[k++]=(Object)p.getF_cantidadVenta();
-//                fila[k++]=(Object)p.getF_diasRecuperacion();
-//                modelo.addRow(fila);
-//                System.out.println("token = "+p.getF_id());
-//                
-//            }
+                        
+                  
                   jTable1.setModel(modelo);
+                  labelMensage.setText("Hecho");
                 }
                 else if(res.getId()==0)
                 {
@@ -305,6 +261,100 @@ public class BuscarFactura extends javax.swing.JDialog {
                 e.printStackTrace();
             }
        }//Fin   del If-----------------------
+       if (jComboBox1.getSelectedItem().equals("Alquiler Factura"))
+       {
+           try
+            {
+        
+                if("".equals(txtId.getText()))
+                {
+                    return;
+                }
+                
+                ClienteAlquilerFac ClientAlquiler = new ClienteAlquilerFac();
+                DefaultTableModel modelo = new DefaultTableModel();
+     
+                //List<ventaFactura> lista = new ArrayList<ventaFactura>(); 
+                Respuesta res =ClientAlquiler.getAlquilerFactura_Id("e4d14ef854bc40f96e7561a9e42fb868",txtId.getText());
+                
+                System.out.print(res.getMensaje()+"<-------*--*------");//Imprime mensage  Respuesta
+      
+                if (res.getId() == 1)
+                {   
+                    Gson json = new Gson();
+         
+                    JsonElement son = new JsonParser().parse(res.getMensaje());
+                   // JsonArray array = son.getAsJsonArray();
+   
+         
+          
+                    System.out.println("con foreach");
+                    
+                    
+                        alquilerFactura alqfactura = new alquilerFactura();
+                        alqfactura = json.fromJson(son, alquilerFactura.class);
+                
+                        //lista.add(ventafactura);
+                    
+
+            
+                    // Declaramos un vector de columnas
+                    String[] col = {"Id","Tipo Fac","id Cliente","id Usua","Date","Hecha por","monto","balance","Pagada Status"};
+                 
+                    // ciclo for para agregar cada una de las columnas
+                    for (int i=0;i<col.length;i++)
+                    {
+                        modelo.addColumn(col[i]);
+                    }    
+              
+                    int k;
+                   
+               
+                       
+                        k=0;
+                        Object[] fila = new Object[9];
+                        fila[k++]=(Object)alqfactura.getF_id();
+                        fila[k++]=(Object)alqfactura.getF_tipo_factura();
+                        fila[k++]=(Object)alqfactura.getF_id_t_cliente();
+                        fila[k++]=(Object)alqfactura.getF_id_t_usuarios();
+                        fila[k++]=(Object)alqfactura.getF_fecha();
+                        fila[k++]=(Object)alqfactura.getF_hecha_por();
+                        fila[k++]=(Object)alqfactura.getF_monto();
+                        fila[k++]=(Object)alqfactura.getF_balance();
+                        fila[k++]=(Object)alqfactura.isF_pagada();
+                        
+                        
+                        
+                        modelo.addRow(fila);
+                        
+                  
+                  jTable1.setModel(modelo);
+                }
+                else if(res.getId()==0)
+                {
+                    labelMensage.setText(res.getMensaje());
+                }
+                else if(res.getId()==2)
+                {
+                    labelMensage.setText(res.getMensaje());
+                }
+                else if(res.getId()==-1)
+                {
+                    labelMensage.setText("Error de la bdd");
+                }
+                else
+                {
+                    labelMensage.setText("*Error* Desconocido");
+                }
+            }
+            catch(Exception e)
+            {
+                e.printStackTrace();
+            }
+           
+           
+           
+       }
     }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
