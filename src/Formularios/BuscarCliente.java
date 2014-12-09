@@ -211,16 +211,19 @@ public class BuscarCliente extends javax.swing.JDialog {
       {
         
         if("".equals(jTextField1.getText()))
-      {return;}
-      ClienteCliente buscarcliente = new ClienteCliente();
-      DefaultTableModel modelo = new DefaultTableModel();
+            {
+                return; // no continua el programa si el TextField esta vacio
+            }
+        
+        ClienteCliente buscarcliente = new ClienteCliente();
+        DefaultTableModel modelo = new DefaultTableModel();
      
-      List<cliente> lista = new ArrayList<cliente>(); 
-      Respuesta res = buscarcliente.getCliente_nombre_apellido("0a6077e8f50ce3b2c3a0b6aa19ccf1b1",jTextField1.getText());
+         List<cliente> lista = new ArrayList<cliente>(); 
+        Respuesta res = buscarcliente.getCliente_nombre_apellido("0a6077e8f50ce3b2c3a0b6aa19ccf1b1",jTextField1.getText());
       
       
-      if (res.getId() > 0)
-      {   
+        if (res.getId() > 0)
+        {   
             Gson json = new Gson();
          
             JsonElement son = new JsonParser().parse(res.getMensaje());
@@ -247,7 +250,7 @@ public class BuscarCliente extends javax.swing.JDialog {
                    modelo.addColumn(col[i]);
               
                int k;
-                for (cliente c: lista)
+            for (cliente c: lista)
             {    
                 
                 //System.out.println(c.getF_alquilerVenta());

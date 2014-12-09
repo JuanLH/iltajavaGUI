@@ -28,7 +28,7 @@ import javax.ws.rs.client.WebTarget;
 public class ClienteVenta_Factura {
     private WebTarget webTarget;
     private Client client;
-    private static final String BASE_URI = "http://itla2-itlajavados.rhcloud.com/itlajava/webresources";
+    private static final String BASE_URI = "http://itla2-itlajavados.rhcloud.com/itlajava/webresources/";
 
     public ClienteVenta_Factura() {
         client = javax.ws.rs.client.ClientBuilder.newClient();
@@ -47,7 +47,7 @@ public class ClienteVenta_Factura {
         WebTarget resource = webTarget;
         Gson json = new Gson();
         Respuesta respo = new Respuesta();
-        resource = resource.path(java.text.MessageFormat.format("getproductos/{0}/{1}", new Object[]{token, id}));
+        resource = resource.path(java.text.MessageFormat.format("/getfactura_id/{0}/{1}", new Object[]{token, id}));
         System.out.println(resource.request(javax.ws.rs.core.MediaType.APPLICATION_JSON).get(String.class));
         String res = resource.request(javax.ws.rs.core.MediaType.APPLICATION_JSON).get(String.class);
         respo = json.fromJson(res, Respuesta.class);
